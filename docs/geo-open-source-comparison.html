@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>同类开源前沿方案对比（GEO / AI 可见性优化）</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --panel: #181b24;
+    --panel-2: #1f2330;
+    --border: #2a2f3d;
+    --text: #e6e8ee;
+    --muted: #9aa3b2;
+    --accent: #9184d9;
+    --accent-2: #5cc8ff;
+    --ok: #4ade80;
+    --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    padding: 40px 24px 28px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #151823, #0f1117);
+  }
+  header h1 { margin: 0 0 8px; font-size: 28px; }
+  header p { margin: 4px 0; color: var(--muted); font-size: 14px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+  .meta { color: var(--muted); font-size: 13px; margin-bottom: 24px; text-align: center; }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 22px 8px;
+    margin-bottom: 24px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.25);
+  }
+  .card h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card h2 .idx {
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 26px; height: 26px;
+    display: inline-flex; align-items: center; justify-content: center;
+    flex: none;
+  }
+  .cap { color: var(--accent-2); font-size: 13px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .summary {
+    background: var(--panel-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 14px 0 18px;
+    font-size: 14.5px;
+    color: #d7dbe6;
+  }
+  h3 { font-size: 15px; color: var(--muted); margin: 18px 0 10px; text-transform: uppercase; letter-spacing: .04em; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 18px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; background: var(--panel-2); }
+  tr:hover td { background: rgba(145,132,217,.06); }
+  code { background: #0c0e14; padding: 1px 6px; border-radius: 5px; font-size: 12.5px; color: #c7d2fe; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .compare { overflow-x: auto; }
+  .compare table { min-width: 760px; }
+  .yes { color: var(--ok); font-weight: 600; }
+  .no { color: #f87171; font-weight: 600; }
+  .note { background: rgba(92,200,255,.08); border: 1px solid rgba(92,200,255,.25); border-radius: 10px; padding: 16px 20px; margin-top: 8px; }
+  .note h2 { color: #fff; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 24px; border-top: 1px solid var(--border); }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <h1>同类开源前沿方案对比</h1>
+  <p>GEO / AI 可见性优化（SparklightAI Generative Engine Optimization）</p>
+  <p>功能类似 GEOLOOK 的开源软件与平台 · 候选方案与资源获取明细</p>
+</header>
+
+<div class="wrap">
+  <div class="meta">生成日期：2026-08-21 ｜ GEOLOOK 自身即开源方案，本文聚焦功能相近的开源竞品对比</div>
+
+  <!-- 1 -->
+  <section class="card">
+    <h2><span class="idx">1</span> GeoBench <span class="cap">NomaDamas/geobench</span></h2>
+    <div class="summary">对标 Profound/Semrush/AthenaHQ 的开源 GEO Benchmark。覆盖 OpenAI、Anthropic、Google、Perplexity、xAI、OpenRouter 等 6 家供应商，计算命中率、语义排名 MRR、竞品声量份额 SoV、引用率、情感分析，带 Bootstrap 95% 置信区间与本地只读仪表盘（Vite，:5173）。支持跨"API/CLI/浏览器"三角验证、断点续跑。</div>
+    <h3>资源获取明细</h3>
+    <table>
+      <thead><tr><th>资源类型</th><th>可能来源</th><th>获取路径描述</th></tr></thead>
+      <tbody>
+        <tr><td>源码仓库</td><td>GitHub</td><td><code>git clone https://github.com/NomaDamas/geobench</code></td></tr>
+        <tr><td>运行时</td><td>Bun 官方</td><td>按 bun.sh 文档安装 Bun（仓库用 <code>bun install</code>，非 npm）</td></tr>
+        <tr><td>依赖库</td><td>包生态</td><td><code>bun install</code> 拉取依赖；配置文件 <code>bun.lock</code> / <code>biome.json</code></td></tr>
+        <tr><td>自托管仪表盘</td><td>仓库内置</td><td><code>bun scripts/seed-demo-runs.ts</code> 生成免费用演示数据 → <code>geobench dash</code> 启本地面板</td></tr>
+        <tr><td>数据集/查询集</td><td>仓库 fixtures</td><td><code>fixtures/sample.yaml</code>（品牌 spec）、<code>fixtures/triangulation-frozen-50.yaml</code>（冻结验证集）</td></tr>
+        <tr><td>方法论文档</td><td>仓库 docs/</td><td><code>docs/methodology.md</code>、<code>docs/runbooks/profile-workflow.md</code></td></tr>
+        <tr><td>供应商 API Key</td><td>各厂商</td><td><code>.env</code> 填 <code>OPENAI_API_KEY</code>/<code>ANTHROPIC_API_KEY</code>/…（或用 Claude Code/Codex/Gemini CLI 代理免 Key）</td></tr>
+        <tr><td>社区渠道</td><td>GitHub</td><td>Issues / PR（当前 65★，无外部 Discord）；GitHub Discussions 平台级</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 2 -->
+  <section class="card">
+    <h2><span class="idx">2</span> GEOVisibilityTool <span class="cap">MasashiToda1/GEOVisibilityTool（原 KnightMafiaLau）</span></h2>
+    <div class="summary">模块化 GEO 测试 harness，由 6 个 Claude Code Skill 组成（生成测试问题 → 浏览器操作真实 LLM 网页端提问 → 算 0–100 可见度分 → 出 CEO 报告 → 给投放渠道建议）。支持国内 Kimi/豆包/DeepSeek/文心/千问/元宝；<code>probe.py</code> 仅用 Python 标准库、零外部依赖；全本地运行，数据存 <code>~/.geo-kb/kb.sqlite</code>。Apache-2.0。</div>
+    <h3>资源获取明细</h3>
+    <table>
+      <thead><tr><th>资源类型</th><th>可能来源</th><th>获取路径描述</th></tr></thead>
+      <tbody>
+        <tr><td>源码仓库</td><td>GitHub</td><td><code>git clone https://github.com/KnightMafiaLau/GEOVisibilityTool.git</code></td></tr>
+        <tr><td>客户端</td><td>Anthropic</td><td>安装 Claude Code（或任意支持 Anthropic Skills 的 Claude 客户端）</td></tr>
+        <tr><td>技能安装</td><td>本地目录</td><td>将 <code>skills/</code> 下 6 个模块 <code>cp</code> 到 <code>~/.claude/skills/</code>，重启客户端</td></tr>
+        <tr><td>浏览器自动化</td><td>MCP</td><td>配置浏览器 MCP server 供 <code>probe.py</code> 操作 LLM 网页端</td></tr>
+        <tr><td>数据集</td><td>运行时生成</td><td>测试问题由 <code>geo-queries</code> 基于品牌信息动态生成；无外部公开数据集</td></tr>
+        <tr><td>知识库</td><td>本地 SQLite</td><td>每次运行累积到 <code>~/.geo-kb/kb.sqlite</code>，备份即 <code>cp</code>；示例见 <code>examples/</code>（如简知 App 案例）</td></tr>
+        <tr><td>Hooks 约束</td><td>仓库 hooks/</td><td><code>hooks/install.sh</code>（需 jq，自动备份 <code>~/.claude/settings.json</code>）</td></tr>
+        <tr><td>社区渠道</td><td>GitHub</td><td>Issues（Recipe Broken / Query Feedback / Channel Pattern 模板）、Discussions、CONTRIBUTING.md、TASKS.md 路线图</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3 -->
+  <section class="card">
+    <h2><span class="idx">3</span> OneGlanse <span class="cap">aryamantodkar/oneglanse</span></h2>
+    <div class="summary">自称"唯一免费开源 GEO 追踪器"。通过抗指纹浏览器（Camoufox/Playwright）<strong>对抗真实产品 UI</strong>（非 API）捕获 ChatGPT/Gemini/Perplexity/Claude/Google AI Overview 的实际回复、内联引用、竞品共现；自带 LLM Key 做 GEO 打分；ClickHouse 时序存储；单命令 Docker 部署。MIT，153★。</div>
+    <h3>资源获取明细</h3>
+    <table>
+      <thead><tr><th>资源类型</th><th>可能来源</th><th>获取路径描述</th></tr></thead>
+      <tbody>
+        <tr><td>源码仓库</td><td>GitHub</td><td><code>git clone https://github.com/aryamantodkar/oneglanse</code></td></tr>
+        <tr><td>运行环境</td><td>Node/Docker</td><td>Node.js 20+ / pnpm 10+ / Docker；<code>cp .env.example .env</code> → <code>pnpm local</code> 启动 :3000</td></tr>
+        <tr><td>关键依赖库</td><td>开源生态</td><td>Camoufox（MPL-2.0 抗指纹 Firefox）、Playwright、BullMQ、ClickHouse、Drizzle ORM、Better Auth、Turndown</td></tr>
+        <tr><td>分析模型</td><td>自带 Key</td><td><code>.env</code> 配置 <code>OPENAI_API_KEY</code> 或 <code>ANTHROPIC_API_KEY</code> 做响应分析</td></tr>
+        <tr><td>数据源</td><td>用户真实会话</td><td>在 <code>/providers</code> 连接自有 ChatGPT/Gemini 等账号；VPS 部署需住宅代理（如 ThorData）</td></tr>
+        <tr><td>文档站</td><td>官方</td><td><code>docs.oneglanse.com</code>（含部署/代理指南）、落地页 <code>oneglanse.com</code></td></tr>
+        <tr><td>社区渠道</td><td>GitHub</td><td>Issues / PR、CONTRIBUTING.md、CODE_OF_CONDUCT.md、SECURITY.md；作者欢迎加供应商/改文档</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4 -->
+  <section class="card">
+    <h2><span class="idx">4</span> Aperture <span class="cap">anyin-ai/aperture</span></h2>
+    <div class="summary">开源"AI 可见性基础设施"，Profound/Peec AI 的免费自托管替代。监控 ChatGPT/Perplexity/Google AI Overviews 等是否在关键查询推荐你的品牌，对比竞品被引用原因，跨模型/语言/市场做结构化审计，随时间追踪。BYOK、自托管、MIT。当前 25★（早期项目）。</div>
+    <h3>资源获取明细</h3>
+    <table>
+      <thead><tr><th>资源类型</th><th>可能来源</th><th>获取路径描述</th></tr></thead>
+      <tbody>
+        <tr><td>源码仓库</td><td>GitHub</td><td><code>git clone https://github.com/anyin-ai/aperture</code></td></tr>
+        <tr><td>部署</td><td>Docker</td><td><code>docker-compose.yml</code> 一键编排；详见仓库 <code>DOCS.md</code> / <code>DEPLOY.md</code> / <code>README.md</code></td></tr>
+        <tr><td>运行时存储</td><td>内置</td><td>本地 SQLite（无需外部 DB；MVP 期密钥明文存，仅限 localhost/私网或加反代鉴权）</td></tr>
+        <tr><td>BYOK 提供商</td><td>各厂商</td><td>配 OpenAI（gpt-4o-mini）、Perplexity（sonar）Key；支持任意 OpenAI 兼容端点（Ollama/vLLM/自定义 Base URL）</td></tr>
+        <tr><td>数据集</td><td>用户定义</td><td>审计查询、品牌/竞品列表、目标市场与语言由用户自定</td></tr>
+        <tr><td>构建方资源</td><td>Anyin</td><td>关联 AEO 代理公司 <a href="https://anyin.ai">anyin.ai</a>（无独立论坛）</td></tr>
+        <tr><td>社区渠道</td><td>GitHub</td><td>Issues / PR（CONTRIBUTING.md）；含 <code>AGENTS.md</code>/<code>CLAUDE.md</code> AI 编码规则；当前 35 commits、25★</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5 -->
+  <section class="card">
+    <h2><span class="idx">5</span> GEO-AEO Tracker <span class="cap">Bright Data · danishashko/geo-aeo-tracker</span></h2>
+    <div class="summary">Bright Data 官方开源的本地优先 AI 可见性仪表盘。Prompt Hub 并行跑 6 个模型（ChatGPT/Perplexity/Gemini/Grok/Google AI Mode/Copilot），生成 0–100 可见度评分、引用机会（竞品被引而你未出现的 URL）、SRO 优化分析、Drift 告警、竞品 Battlecards。数据存浏览器 IndexedDB，无外部数据库。</div>
+    <h3>资源获取明细</h3>
+    <table>
+      <thead><tr><th>资源类型</th><th>可能来源</th><th>获取路径描述</th></tr></thead>
+      <tbody>
+        <tr><td>源码仓库</td><td>GitHub</td><td><code>git clone https://github.com/danishashko/geo-aeo-tracker.git</code></td></tr>
+        <tr><td>在线 Demo</td><td>Bright Data</td><td><code>demos.brightdata.com/geo-tracker</code>（免 Key 试用）</td></tr>
+        <tr><td>运行</td><td>npm</td><td><code>npm install</code> → <code>.env</code> 填 <code>BRIGHT_DATA_KEY</code> + 6 个 dataset ID → <code>npm run dev</code></td></tr>
+        <tr><td>数据源（核心）</td><td>Bright Data</td><td>LLM Scrapers（6 个模型 dataset ID 从 Scrapers Marketplace 获取）、SERP API、Web Unlocker（按量计费 ~$1.50/1K 记录，BYOK）</td></tr>
+        <tr><td>增强依赖</td><td>Google</td><td>Gemini API（SRO 管道第 1 阶段 Grounding）</td></tr>
+        <tr><td>数据集</td><td>实时查询</td><td>无静态数据集；回答经 <code>normalizeAnswer()</code> 统一格式后存 IndexedDB</td></tr>
+        <tr><td>配套文章</td><td>Bright Data 博客</td><td><code>brightdata.com/blog/ai/ai-visibility-tracker</code>（含架构与抓取细节）</td></tr>
+        <tr><td>社区渠道</td><td>GitHub</td><td>仓库 Issues/PR；以 Bright Data 官方社区/文档为外围支持</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- compare -->
+  <section class="card compare">
+    <h2><span class="idx">↔</span> 横向速览</h2>
+    <table>
+      <thead><tr><th>方案</th><th>开源协议</th><th>引擎覆盖</th><th>诊断→执行闭环</th><th>自托管</th><th>标杆度</th></tr></thead>
+      <tbody>
+        <tr><td><strong>GEOLOOK</strong>（参照）</td><td>MIT</td><td>17 引擎（含 7 国内）</td><td class="yes">✅ 工单+资产+验收+交付</td><td class="yes">✅ 纯 Python</td><td>最完整实现平台</td></tr>
+        <tr><td>GeoBench</td><td>未注明(Public)</td><td>6 家(API/CLI/浏览器)</td><td class="no">❌ 仅 benchmark</td><td class="yes">✅ Bun</td><td>指标严谨、带 CI</td></tr>
+        <tr><td>GEOVisibilityTool</td><td>Apache-2.0</td><td>国内 6 家 + 自定义</td><td class="no">❌ 测量+策略报告</td><td class="yes">✅ Claude Skill</td><td>国内覆盖强、零依赖</td></tr>
+        <tr><td>OneGlanse</td><td>MIT</td><td>5 家(真实 UI)</td><td class="no">❌ 监控+评分</td><td class="yes">✅ Docker</td><td>星标最高、UI 真实捕获</td></tr>
+        <tr><td>Aperture</td><td>MIT</td><td>ChatGPT/Perplexity(规划扩)</td><td class="no">❌ 监控+审计</td><td class="yes">✅ Docker</td><td>早期、轻量</td></tr>
+        <tr><td>GEO-AEO Tracker</td><td>未注明</td><td>6 家(经 Bright Data)</td><td class="no">❌ 监控+评分</td><td class="yes">✅ 浏览器本地</td><td>企业数据源、需付费 Key</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card note">
+    <h2>结论建议</h2>
+    <ul>
+      <li>与 GEOLOOK 最可比的是 <strong>GeoBench</strong>（指标方法论最严谨）与 <strong>OneGlanse</strong>（真实 UI 捕获、社区最活跃）。</li>
+      <li>若关注<strong>国内市场</strong>，则 <strong>GEOVisibilityTool</strong> 的国内引擎覆盖最直接互补。</li>
+      <li>三者均为纯监测/分析层，只有 GEOLOOK 覆盖了"诊断 → 生成可部署资产 → 自动验收 → 客户交付"的完整实现闭环。</li>
+    </ul>
+  </section>
+
+  <footer>本报告为本地生成，可离线分享。GEOLOOK · 2026-08-21</footer>
+</div>
+</body>
+</html>

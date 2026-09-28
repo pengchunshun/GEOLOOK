@@ -1,0 +1,3 @@
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Warning: Permanently added 'ssh.localhost.run,3.234.18.192' (RSA) to the list of known hosts.
+administrator@ssh.localhost.run: Permission denied (publickey).

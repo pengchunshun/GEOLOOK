@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+work/
+.env
+secrets.enc
+.jobs/
+docs/plans/
+web/
+nohup.out
+.claude/

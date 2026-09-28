@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>星火之光 SparklightAIGEOLOOK · 交付中心</title>
+<style>
+  :root{
+    --bg:#0b0e1c; --panel:#141a30; --panel2:#1b2240; --border:#2b3358;
+    --text:#e9ecf7; --muted:#98a2c6; --accent:#7c5cff; --accent2:#5cc8ff;
+    --spark:#ff9d3c; --spark2:#ffd27a;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;}
+  .hero{padding:54px 24px 40px;text-align:center;
+    background:radial-gradient(1200px 420px at 50% -12%,rgba(124,92,255,.30),transparent),
+               radial-gradient(800px 320px at 82% 18%,rgba(255,157,60,.18),transparent),
+               linear-gradient(180deg,#10142b,#0b0e1c);
+    border-bottom:1px solid var(--border);}
+  .logo{display:inline-flex;align-items:center;gap:12px;margin-bottom:10px;}
+  .spark-ico{width:34px;height:34px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,var(--spark2),var(--spark) 55%,#b85c12);
+    box-shadow:0 0 18px rgba(255,157,60,.6);position:relative;}
+  .spark-ico::after{content:"";position:absolute;top:-5px;left:50%;width:2px;height:13px;
+    background:linear-gradient(var(--spark2),transparent);transform:translateX(-50%) rotate(18deg);}
+  .logo .name{font-size:24px;font-weight:800;
+    background:linear-gradient(90deg,#fff,#bcaaff);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero small{display:block;color:var(--spark);letter-spacing:.32em;font-size:12px;font-weight:600;margin-top:2px;}
+  .hero p{color:var(--muted);font-size:13.5px;max-width:640px;margin:14px auto 0;}
+  .wrap{max-width:1040px;margin:0 auto;padding:30px 18px 60px;}
+  .sec-title{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin:26px 0 14px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:820px){.cards{grid-template-columns:1fr;}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;
+    text-decoration:none;color:inherit;transition:.18s;box-shadow:0 8px 28px rgba(0,0,0,.3);position:relative;overflow:hidden;}
+  .card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .card .ic{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    font-size:19px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:12px;}
+  .card h3{margin:0 0 6px;font-size:15px;color:#fff;}
+  .card p{margin:0;font-size:12.5px;color:var(--muted);}
+  .card .fmt{margin-top:12px;font-size:11px;color:var(--accent2);border-top:1px solid var(--border);padding-top:10px;}
+  .bundle{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:16px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;text-decoration:none;color:inherit;transition:.18s;}
+  .bundle:hover{border-color:var(--spark);}
+  .bundle .ic{width:46px;height:46px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;
+    font-size:22px;background:linear-gradient(135deg,var(--spark),var(--spark2));color:#1a1206;}
+  .bundle .txt{flex:1;min-width:200px;}
+  .bundle h3{margin:0 0 4px;font-size:16px;color:#fff;}
+  .bundle p{margin:0;font-size:12.5px;color:var(--muted);}
+  .bundle .go{color:var(--accent2);font-size:13px;font-weight:700;}
+  .map-note{background:rgba(92,200,255,.08);border:1px solid rgba(92,200,255,.25);border-radius:12px;
+    padding:14px 18px;font-size:12.5px;color:#cdd3e6;margin-top:8px;}
+  .map-note b{color:var(--accent2);}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:26px;border-top:1px solid var(--border);}
+  .badge{display:inline-block;background:rgba(255,157,60,.15);border:1px solid rgba(255,157,60,.4);
+    color:var(--spark);border-radius:6px;font-size:11px;padding:1px 8px;margin-left:8px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo"><span class="spark-ico"></span><span class="name">星火之光</span></div>
+  <small>SPARKLIGHT · AIGEOLOOK</small>
+  <p>GEOLOOK 定制开发「星火之光 SparklightAIGEOLOOK」交付中心 —— 产品设计说明书、UI 设计图与品牌化资产一站式入口。</p>
+</div>
+
+<div class="wrap">
+
+  <div class="sec-title">★ 核心交付包（推荐先看）</div>
+  <a class="bundle" href="SparklightAIGEOLOOK_UI设计图.html">
+    <div class="ic">🎨</div>
+    <div class="txt"><h3>UI 设计图 <span class="badge">5 页</span></h3>
+      <p>星火总览仪表盘 · AI 智能体工作台 · 工单协作与行业包 · 品牌化白皮书 · 实施路线图，与说明书一一对应。</p></div>
+    <div class="go">打开 →</div>
+  </a>
+  <a class="bundle" href="SparklightAIGEOLOOK_产品设计说明书.html">
+    <div class="ic">📘</div>
+    <div class="txt"><h3>产品设计说明书 <span class="badge">7 章 + 附录</span></h3>
+      <p>产品定位 / 目标用户 / 功能架构 / 业务流程 / 功能详述 / 技术可行性 / 实施路径，含说明书↔UI 对应关系表。</p></div>
+    <div class="go">打开 →</div>
+  </a>
+
+  <div class="sec-title">★ 所有交付文件</div>
+  <div class="cards">
+    <a class="card" href="SparklightAIGEOLOOK_产品设计说明书.html">
+      <div class="ic">🌐</div><h3>说明书 · HTML</h3>
+      <p>网页版，含星火之光品牌视觉，可离线/分享打开。</p>
+      <div class="fmt">格式：HTML · 自包含单文件</div>
+    </a>
+    <a class="card" href="SparklightAIGEOLOOK_产品设计说明书.pdf">
+      <div class="ic">📄</div><h3>说明书 · PDF</h3>
+      <p>打印 / 邮件分发版，带页脚与结构化表格。</p>
+      <div class="fmt">格式：PDF · A4</div>
+    </a>
+    <a class="card" href="SparklightAIGEOLOOK_UI设计图.html">
+      <div class="ic">🖥️</div><h3>UI 设计图</h3>
+      <p>5 个关键优化点界面布局、交互状态与视觉风格。</p>
+      <div class="fmt">格式：HTML · 含设备框与状态标注</div>
+    </a>
+  </div>
+
+  <div class="map-note">
+    <b>对应关系（说明书附录 A）</b>：① 总览仪表盘 ↔ 5.6 实时仪表盘与竞品雷达 ｜ ② AI 智能体 ↔ 5.1 多智能体引擎 ｜
+    ③ 工单/行业 ↔ 5.4 + 5.2 ｜ ④ 白皮书 ↔ 5.5 ｜ ⑤ 路线图 ↔ 第 7 章实施路径。
+  </div>
+
+  <footer>星火之光 SparklightAIGEOLOOK · 交付中心 v1.0 · 2026-08-22</footer>
+</div>
+</body>
+</html>

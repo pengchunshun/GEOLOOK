@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>星火之光 SparklightAIGEOLOOK · 平台 API 配置指导文档</title>
+<style>
+  :root{
+    --indigo:#2D326B;        /* 主靛蓝·可信 */
+    --indigo-deep:#1E2238;   /* 深墨色·锚定 */
+    --coral:#FF6B5B;         /* 柔珊瑚·温度 */
+    --coral-deep:#C9473A;    /* 深珊瑚·强调 */
+    --warm:#FBF8F4;          /* 暖白·背景 */
+    --pale-indigo:#EFF0FA;   /* 淡靛蓝 */
+    --pale-coral:#FFF0EC;    /* 淡珊瑚 */
+    --line:#DEDDE7;          /* 描边 */
+    --muted:#6E7181;         /* 中性灰 */
+    --white:#ffffff;
+    --ink:#1E2238;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--warm);color:var(--ink);line-height:1.75;}
+  .hero{position:relative;overflow:hidden;
+    background:radial-gradient(circle at 85% 15%,rgba(255,107,91,.20),transparent 30%),
+               linear-gradient(135deg,var(--indigo),var(--indigo-deep));
+    color:#fff;padding:58px 24px 46px;text-align:center;border-bottom:1px solid var(--line);}
+  .logo{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#ffd2cb,var(--coral) 55%,var(--coral-deep));
+    box-shadow:0 0 22px rgba(255,107,91,.45);margin-bottom:14px;position:relative;}
+  .logo::after{content:"";position:absolute;top:-6px;left:50%;width:3px;height:16px;
+    background:linear-gradient(#ffd2cb,transparent);transform:translateX(-50%) rotate(18deg);}
+  .hero small{display:block;color:var(--coral);letter-spacing:.32em;font-size:12px;font-weight:700;margin-bottom:8px;}
+  .hero h1{margin:0;font-size:31px;font-weight:900;letter-spacing:.5px;}
+  .hero .sub{color:#c6c9dc;font-size:13.5px;margin-top:12px;}
+  .wrap{max-width:1000px;margin:0 auto;padding:30px 18px 60px;}
+  .sec{background:var(--white);border:1px solid var(--line);border-radius:16px;
+    padding:24px 26px;margin-bottom:20px;box-shadow:0 8px 26px rgba(45,50,107,.06);}
+  .sec-head{border-left:6px solid var(--coral);background:var(--pale-indigo);
+    border-radius:0 12px 12px 0;padding:14px 20px;margin:-4px 0 16px;}
+  .sec h2{margin:0;font-size:20px;color:var(--indigo);font-weight:800;}
+  .sec h3{font-size:15px;color:var(--coral-deep);margin:18px 0 8px;font-weight:700;}
+  .sec p{font-size:14px;margin:8px 0;color:#33384f;text-align:justify;}
+  .sec ul{margin:8px 0;padding-left:20px;}
+  .sec li{font-size:13.5px;margin:6px 0;color:#33384f;}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;background:var(--white);border-radius:10px;overflow:hidden;}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;}
+  th{background:var(--indigo);color:#fff;font-weight:600;letter-spacing:.5px;font-size:12.5px;}
+  tr:nth-child(even) td{background:var(--pale-indigo);}
+  code{background:var(--indigo-deep);color:#ffd2cb;padding:1px 7px;border-radius:5px;font-size:12px;font-family:ui-monospace,Consolas,monospace;}
+  pre{background:var(--indigo-deep);border:1px solid var(--line);border-radius:10px;padding:14px;overflow-x:auto;font-size:12.5px;margin:8px 0;color:#f1f2f8;}
+  .tag{display:inline-block;background:var(--pale-coral);color:var(--coral-deep);border:1px solid rgba(255,107,91,.4);
+    border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;margin-left:6px;}
+  .note{background:var(--pale-coral);border:1px solid rgba(255,107,91,.35);border-radius:12px;
+    padding:12px 16px;margin:10px 0;font-size:13px;color:var(--coral-deep);}
+  .ok{color:#1a7f37;font-weight:700;}
+  .apicall{display:flex;align-items:center;gap:10px;margin:10px 0;padding:12px 16px;
+    background:var(--pale-indigo);border:1px solid var(--line);border-radius:10px;}
+  .apicall .k{font-family:ui-monospace,Consolas,monospace;font-size:13px;color:#fff;background:var(--indigo);
+    padding:4px 12px;border-radius:6px;white-space:nowrap;font-weight:700;}
+  .apicall .v{font-size:13px;color:var(--muted);}
+  .brand-link{color:var(--coral-deep);text-decoration:none;font-weight:600;}
+  .brand-link:hover{text-decoration:underline;}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:26px;border-top:1px solid var(--line);
+    background:var(--white);}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo"></div>
+  <small>SPARKLIGHT · AI GEO PLATFORM</small>
+  <h1>SparklightAIGEOLOOK 平台 API 配置指导文档</h1>
+  <div class="sub">基于 GEOLOOK 开源架构 · 引擎与密钥接入指南 · 2026-08-22</div>
+</div>
+
+<div class="wrap">
+
+  <div class="sec">
+    <div class="sec-head"><h2>总览</h2></div>
+    <p>星火之光 SparklightAIGEOLOOK 的 AI 采样与诊断能力，依赖已配置的模型引擎 Key。看板「引擎与密钥」页面支持 5 家国内主流厂商，Key 写入项目根目录 <code>.env</code> 后立即生效。配好任意 1 个引擎即可开始采样，配得越多覆盖越全。建议先配 1 个跑通，再补全其余用于多引擎横评。</p>
+    <table>
+      <thead><tr><th>#</th><th>公司 / 平台</th><th>区域</th><th>状态</th><th>环境变量</th><th>获取链接</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>豆包（方舟 API / 火山引擎）</td><td>国内</td><td><span class="tag">优先推荐</span></td><td><code>ARK_API_KEY</code></td><td><a class="brand-link" href="https://www.volcengine.com/product/ark" target="_blank">volcengine.com/product/ark</a></td></tr>
+        <tr><td>2</td><td>智谱 GLM</td><td>国内</td><td>未配</td><td><code>ZHIPUAI_API_KEY</code></td><td><a class="brand-link" href="https://open.bigmodel.cn/" target="_blank">open.bigmodel.cn</a></td></tr>
+        <tr><td>3</td><td>DeepSeek</td><td>国内</td><td><span class="ok">已配 …e956</span></td><td><code>DEEPSEEK_API_KEY</code></td><td><a class="brand-link" href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a></td></tr>
+        <tr><td>4</td><td>Kimi（月之暗面 Moonshot）</td><td>国内</td><td>未配</td><td><code>MOONSHOT_API_KEY</code></td><td><a class="brand-link" href="https://platform.moonshot.cn/" target="_blank">platform.moonshot.cn</a></td></tr>
+        <tr><td>5</td><td>MiniMax</td><td>国内/海外</td><td>未配</td><td><code>MINIMAX_API_KEY</code></td><td><a class="brand-link" href="https://www.minimax.io/" target="_blank">minimax.io</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>1. 豆包 / 方舟 API（火山引擎 Ark） <span class="tag">优先</span></h2></div>
+    <p>平台：字节跳动 · 火山引擎 · 方舟（Ark） · OpenAI 兼容协议</p>
+    <div class="apicall"><span class="k">ARK_API_KEY</span><span class="v">写入 <code>work/&lt;slug&gt;/.env</code></span></div>
+    <p><b>获取链接：</b><a class="brand-link" href="https://www.volcengine.com/product/ark" target="_blank">volcengine.com/product/ark</a> ｜ 控制台：<a class="brand-link" href="https://console.volcengine.com/ark" target="_blank">console.volcengine.com/ark</a></p>
+    <h3>配置步骤</h3>
+    <ul>
+      <li>用火山引擎账号登录；首次使用需完成实名认证。</li>
+      <li>进入「方舟 → 在线推理」开通「在线推理 - 按量付费」或对应模型。</li>
+      <li>在「API Key 管理」创建 API Key（可设置失效期与限额）。</li>
+      <li>在「在线推理 → 模型列表」开通要用的豆包模型（如 <code>doubao-pro-32k</code>、<code>doubao-1-5-pro</code>）。</li>
+      <li>将 Key 写入 <code>.env</code>：</li>
+    </ul>
+    <pre>ARK_API_KEY=你的密钥
+ARK_MODEL=doubao-1-5-pro-32k-250115
+ARK_BASE_URL=https://ark.cn-beijing.volces.com/api/v3</pre>
+    <div class="note"><b>特殊说明：</b>必须先「开通模型」才能调用；模型 ID（如 <code>doubao-...</code>）填在请求的 <code>model</code> 字段，而非写在 Key 里。</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>2. 智谱 GLM（BigModel 开放平台）</h2></div>
+    <p>官网：<a class="brand-link" href="https://www.zhipuai.cn/" target="_blank">zhipuai.cn</a> ｜ 开放平台：<a class="brand-link" href="https://open.bigmodel.cn/" target="_blank">open.bigmodel.cn</a> ｜ 环境变量：<code>ZHIPUAI_API_KEY</code></p>
+    <h3>配置步骤</h3>
+    <ul>
+      <li>在开放平台注册并完成实名。</li>
+      <li>「个人中心 → API Keys」→「创建新 Key」，复制保存（仅显示一次）。</li>
+      <li>在「模型广场」按需开通 GLM-4 / GLM-4-Plus / GLM-Z1 等模型权限。</li>
+      <li>写入 <code>.env</code>：</li>
+    </ul>
+    <pre>ZHIPUAI_API_KEY=你的密钥</pre>
+    <div class="note"><b>特殊说明：</b>多数模型需先在「模型广场」开通才能调用；GLM-4-Flash 通常提供 200 万 token 体验包。</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>3. DeepSeek <span class="tag">已配置</span></h2></div>
+    <p>官网：<a class="brand-link" href="https://www.deepseek.com/" target="_blank">deepseek.com</a> ｜ 开放平台：<a class="brand-link" href="https://platform.deepseek.com/" target="_blank">platform.deepseek.com</a> ｜ 环境变量：<code>DEEPSEEK_API_KEY</code> ｜ 完全兼容 OpenAI（<code>base_url=https://api.deepseek.com</code>）</p>
+    <h3>配置步骤</h3>
+    <ul>
+      <li>注册并登录开放平台。</li>
+      <li>「API Keys」→「创建新 Key」，命名后立即复制保存。</li>
+      <li>在「充值 / 账户余额」中确保有可用额度。</li>
+      <li>写入 <code>.env</code>：</li>
+    </ul>
+    <pre>DEEPSEEK_API_KEY=你的密钥</pre>
+    <div class="note"><b>特殊说明：</b>截图显示「已配置 …e956」，如需轮换请用看板「修改」。无「开通模型」环节，Key 对所有已上线模型生效。</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>4. Kimi（月之暗面 Moonshot AI）</h2></div>
+    <p>官网：<a class="brand-link" href="https://www.moonshot.cn/" target="_blank">moonshot.cn</a> ｜ 开放平台：<a class="brand-link" href="https://platform.moonshot.cn/" target="_blank">platform.moonshot.cn</a> ｜ 环境变量：<code>MOONSHOT_API_KEY</code> ｜ 按上下文窗口计费：8k / 32k / 128k</p>
+    <h3>配置步骤</h3>
+    <ul>
+      <li>注册并登录。</li>
+      <li>「控制台 → API Key 管理」→「新建 Key」，复制保存。</li>
+      <li>「账户管理 → 充值」按需充入额度。</li>
+      <li>写入 <code>.env</code>：</li>
+    </ul>
+    <pre>MOONSHOT_API_KEY=你的密钥
+MOONSHOT_BASE_URL=https://api.moonshot.cn/v1</pre>
+    <div class="note"><b>特殊说明：</b>长上下文（128k）单价显著高于短上下文；Key 不绑定具体模型，对所有 K 系列生效。</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>5. MiniMax</h2></div>
+    <p>官网：<a class="brand-link" href="https://www.minimaxi.com/" target="_blank">minimaxi.com</a> ｜ 海外站：<a class="brand-link" href="https://www.minimax.io/" target="_blank">minimax.io</a> ｜ 中国版 API：<a class="brand-link" href="https://api.minimax.chat/" target="_blank">api.minimax.chat</a> ｜ 环境变量：<code>MINIMAX_API_KEY</code></p>
+    <h3>配置步骤</h3>
+    <ul>
+      <li>进入海外版或中国版注册账号。</li>
+      <li>「Account → API Keys」→「Create new secret key」。</li>
+      <li>复制保存（仅显示一次）。</li>
+      <li>写入 <code>.env</code>：</li>
+    </ul>
+    <pre>MINIMAX_API_KEY=你的密钥</pre>
+    <div class="note"><b>特殊说明：</b>海外版（minimax.io）与中国版（api.minimax.chat）账号体系不通用，需分别注册。海外版常用 <code>MiniMax-Text-01</code>、<code>MiniMax-VL-01</code>。</div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>通用配置提醒</h2></div>
+    <div class="note">Key 写入 <code>work/&lt;项目slug&gt;/.env</code>，立即生效。配好任意 1 个引擎就能开始采样；配得越多覆盖越全。若仅配 1 个即可跑通全流程，其余用于多引擎横评与可用性对比。</div>
+    <h3>「配置失败：连续失败，服务未响应」常见根因</h3>
+    <p>该提示多数情况下 <b>不是 Key 本身问题</b>，而是：</p>
+    <ul>
+      <li>GEOLOOK 看板进程未运行（依赖被重置导致退出）。</li>
+      <li>写错了目录（写到了仓库根目录，而非 <code>work/&lt;slug&gt;/.env</code>）。</li>
+    </ul>
+    <p>参考项目内的 <code>ensure-deps.ps1</code> 与 <code>geolib.py</code> 中的 <code>_ensure_dependencies()</code> 自愈机制。</p>
+  </div>
+
+  <div class="sec">
+    <div class="sec-head"><h2>缺失 / 无法识别说明</h2></div>
+    <p class="ok">本次截图清晰可识别所有 5 家厂商，无缺失项。</p>
+  </div>
+
+</div>
+<footer>星火之光 SparklightAIGEOLOOK · 平台 API 配置指导文档 v1.1 · 2026-08-22</footer>
+</body>
+</html>

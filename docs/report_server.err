@@ -1,0 +1,98 @@
+127.0.0.1 - - [22/Aug/2026 10:59:40] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 10:59:40] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:05:13] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:05:14] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:05:14] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:19:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:19:29] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:19:54] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:19:54] "GET /SparklightAIGEOLOOK_%E6%B5%9C%D1%83%E6%90%A7%E7%92%81%E6%8D%90%EE%85%B8%E7%92%87%E5%AD%98%E6%A7%91%E6%B6%94%3Fhtml HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:19:54] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:19:54] "GET /SparklightAIGEOLOOK_%E6%B5%9C%D1%83%E6%90%A7%E7%92%81%E6%8D%90%EE%85%B8%E7%92%87%E5%AD%98%E6%A7%91%E6%B6%94%3Fpdf HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:19:54] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:19:54] "GET /SparklightAIGEOLOOK_UI%E7%92%81%E6%8D%90%EE%85%B8%E9%8D%A5%3Fhtml HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:20:20] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:20:20] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:20:20] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:20:20] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:20:49] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:28:14] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:29:20] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:32:48] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:32:49] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:32:50] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:32:51] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.pdf HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:43:56] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 304 -
+127.0.0.1 - - [22/Aug/2026 11:46:18] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:46:18] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:52:09] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:52:11] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:54:52] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:54:53] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:54:53] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:04] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:04] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:08] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:08] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:08] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:08] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:09] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:09] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:09] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:09] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:10] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:10] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:11] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:11] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:12] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:12] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:15] "GET /SparklightAIGEOLOOK_%E4%BA%A7%E5%93%81%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:16] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:16] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:19] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:19] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:20] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:20] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:20] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:20] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:20] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:20] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:20] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:20] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:20] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:20] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:21] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:55:21] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:21] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:22] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:22] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:23] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:23] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:24] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:24] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:28] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:28] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:29] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:29] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:41] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:41] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:41] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:41] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:55:43] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:55:43] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:57:28] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 11:57:29] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 11:57:29] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 11:58:53] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 12:03:03] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 12:03:05] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 12:03:05] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 13:48:20] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 13:48:21] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 13:48:21] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 13:49:31] code 404, message File not found
+127.0.0.1 - - [22/Aug/2026 13:49:31] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [22/Aug/2026 13:57:34] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -
+127.0.0.1 - - [22/Aug/2026 13:57:35] "GET /SparklightAIGEOLOOK_UI%E8%AE%BE%E8%AE%A1%E5%9B%BE.html HTTP/1.1" 200 -

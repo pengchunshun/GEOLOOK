@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>星火之光生成式引擎用户操作指南 · SparklightAI GeoLook</title>
+<style>
+:root{
+  --indigo:#2D326B; --coral:#FF6B5B; --coral-dark:#C9473A;
+  --ink:#1E2238; --cream:#FBF8F4; --indigo-soft:#EFF0FA;
+  --coral-soft:#FFF0EC; --gray:#6E7181; --line:#E4E2DB;
+  --code-bg:#1E2238; --shadow:0 8px 30px rgba(45,50,107,.10);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  color:var(--ink);background:var(--cream);line-height:1.8;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--coral-dark);text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/* ===== Header ===== */
+.topbar{
+  position:sticky;top:0;z-index:50;background:linear-gradient(120deg,var(--indigo),#3a3f86);
+  color:#fff;padding:14px 22px;display:flex;align-items:center;gap:14px;
+  box-shadow:0 2px 16px rgba(45,50,107,.25);
+}
+.brand-mark{
+  width:34px;height:34px;flex:0 0 auto;border-radius:9px;
+  background:radial-gradient(circle at 35% 30%,var(--coral),var(--coral-dark));
+  display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:18px;
+  box-shadow:0 0 14px rgba(255,107,91,.55);
+}
+.topbar h1{font-size:18px;font-weight:800;letter-spacing:.5px;}
+.topbar .sub{font-size:12px;opacity:.8;font-weight:400;margin-left:auto;}
+.menu-btn{display:none;background:rgba(255,255,255,.15);border:none;color:#fff;font-size:20px;
+  width:40px;height:36px;border-radius:8px;cursor:pointer;}
+
+/* ===== Layout ===== */
+.wrap{display:flex;align-items:flex-start;max-width:1280px;margin:0 auto;}
+.sidebar{
+  position:sticky;top:62px;width:264px;flex:0 0 264px;align-self:flex-start;
+  max-height:calc(100vh - 62px);overflow-y:auto;padding:22px 12px 40px 18px;
+  border-right:1px solid var(--line);
+}
+.sidebar .toc-title{font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;
+  letter-spacing:1px;margin:6px 10px 10px;}
+.sidebar a{
+  display:block;padding:8px 12px;border-radius:8px;color:var(--ink);font-size:14px;
+  border-left:3px solid transparent;transition:.18s;line-height:1.4;
+}
+.sidebar a:hover{background:var(--indigo-soft);text-decoration:none;}
+.sidebar a.active{background:var(--indigo-soft);border-left-color:var(--coral);
+  color:var(--indigo);font-weight:700;}
+.sidebar a.sub{font-size:13px;padding-left:26px;color:var(--gray);}
+.main{flex:1;min-width:0;padding:30px 36px 80px;}
+
+/* ===== Hero ===== */
+.hero{
+  background:linear-gradient(135deg,var(--indigo),#424892);
+  color:#fff;border-radius:18px;padding:40px 34px;margin-bottom:30px;position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.hero:before{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;
+  background:radial-gradient(circle,rgba(255,107,91,.4),transparent 70%);}
+.hero h2{font-size:30px;font-weight:800;margin-bottom:8px;letter-spacing:.5px;}
+.hero .tag{display:inline-block;background:rgba(255,107,91,.18);border:1px solid rgba(255,107,91,.5);
+  color:#ffd9d2;font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:14px;}
+.hero p{opacity:.92;max-width:760px;font-size:15px;}
+.badges{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;}
+.badge{font-size:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  padding:4px 11px;border-radius:6px;color:#fff;}
+blockquote{
+  border-left:4px solid var(--coral);background:var(--coral-soft);padding:14px 18px;
+  border-radius:0 10px 10px 0;margin:18px 0;color:#7a3329;font-size:15px;
+}
+
+/* ===== Sections ===== */
+section{margin-bottom:40px;scroll-margin-top:74px;}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.section-head .num{
+  flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:var(--indigo);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;
+}
+h3.sec{font-size:23px;font-weight:800;color:var(--indigo);}
+h4{font-size:18px;font-weight:700;color:var(--coral-dark);margin:22px 0 10px;}
+h5{font-size:15px;font-weight:700;color:var(--indigo);margin:14px 0 6px;}
+p{margin:10px 0;}
+.lead{color:var(--gray);font-size:15px;}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+  box-shadow:var(--shadow);margin:16px 0;}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.mini{background:var(--indigo-soft);border-radius:12px;padding:16px 18px;}
+.mini h5{margin-top:0;color:var(--indigo);}
+.kpi{font-size:26px;font-weight:800;color:var(--coral-dark);}
+.kpi .u{font-size:13px;color:var(--gray);font-weight:500;}
+
+/* ===== Table ===== */
+.table-wrap{overflow-x:auto;margin:14px 0;border-radius:12px;border:1px solid var(--line);}
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff;min-width:520px;}
+th{background:var(--indigo);color:#fff;text-align:left;padding:11px 14px;font-weight:700;white-space:nowrap;}
+td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top;}
+tr:nth-child(even) td{background:var(--cream);}
+td code,th code{background:var(--indigo-soft);padding:1px 6px;border-radius:5px;font-size:13px;color:var(--indigo);}
+
+/* ===== Code ===== */
+pre.code{background:var(--code-bg);border-radius:12px;padding:16px 18px;overflow-x:auto;
+  margin:14px 0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);}
+pre.code code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  font-size:13.5px;line-height:1.7;color:#e6e8f0;white-space:pre;}
+.tok-com{color:#8a8fa3;font-style:italic;}
+.tok-str{color:#ffb38a;}
+.tok-num{color:#ffd479;}
+.tok-kw{color:#8ab4ff;font-weight:600;}
+.tok-opt{color:#9fe0a0;}
+.tok-cmd{color:#ff9d8a;font-weight:600;}
+.code-cap{font-size:12.5px;color:var(--gray);margin:-6px 0 14px;}
+
+/* ===== Collapse ===== */
+details.fold{background:#fff;border:1px solid var(--line);border-radius:12px;margin:12px 0;
+  box-shadow:var(--shadow);overflow:hidden;}
+details.fold>summary{
+  cursor:pointer;list-style:none;padding:14px 18px;font-weight:700;color:var(--indigo);
+  display:flex;align-items:center;gap:10px;font-size:15.5px;
+}
+details.fold>summary::-webkit-details-marker{display:none;}
+details.fold>summary:before{content:"+";flex:0 0 auto;width:22px;height:22px;border-radius:6px;
+  background:var(--coral-soft);color:var(--coral-dark);display:flex;align-items:center;justify-content:center;
+  font-weight:800;transition:.2s;}
+details.fold[open]>summary:before{content:"\2212";background:var(--coral);color:#fff;}
+details.fold>summary:hover{background:var(--indigo-soft);}
+.fold-body{padding:4px 18px 18px;border-top:1px solid var(--line);}
+.fold-body ul{margin:8px 0 8px 4px;padding-left:18px;}
+.fold-body li{margin:5px 0;}
+
+/* steps */
+.step{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:14px 16px;margin:10px 0;box-shadow:var(--shadow);}
+.step .badge-n{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--coral);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;}
+.step .step-c{flex:1;}
+.step .step-c b{color:var(--indigo);}
+
+.note{background:var(--indigo-soft);border-left:4px solid var(--indigo);padding:12px 16px;
+  border-radius:0 10px 10px 0;margin:14px 0;font-size:14.5px;}
+.warn{background:#fff6e9;border-left:4px solid #e8a33d;padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;font-size:14.5px;}
+ul.clean{list-style:none;padding-left:0;}
+ul.clean li{padding:6px 0 6px 26px;position:relative;}
+ul.clean li:before{content:"\2605";position:absolute;left:0;color:var(--coral);}
+ul.check li:before{content:"\2713";color:#2e9e5b;}
+
+/* 按钮示意（模拟看板按钮样式，便于用户对照） */
+.uibtn{display:inline-flex;align-items:center;gap:6px;background:var(--coral);color:#fff;
+  border-radius:8px;padding:7px 14px;font-size:14px;font-weight:600;box-shadow:var(--shadow);}
+.uibtn.ghost{background:#fff;color:var(--coral-dark);border:1px solid var(--coral);box-shadow:none;}
+
+.footer{background:var(--ink);color:#cfd2e0;text-align:center;padding:30px 20px;border-radius:14px;margin-top:20px;}
+.footer .sign{color:#fff;font-weight:700;font-size:15px;margin-bottom:6px;}
+.footer .meta{font-size:13px;opacity:.7;}
+
+#topBtn{position:fixed;right:22px;bottom:22px;width:46px;height:46px;border-radius:50%;
+  background:var(--coral);color:#fff;border:none;font-size:20px;cursor:pointer;display:none;
+  box-shadow:0 6px 18px rgba(255,107,91,.5);z-index:60;}
+
+/* ===== Responsive ===== */
+@media(max-width:980px){
+  .menu-btn{display:block;}
+  .sidebar{position:fixed;top:62px;left:0;height:calc(100vh - 62px);background:var(--cream);
+    transform:translateX(-100%);transition:.25s;z-index:45;box-shadow:4px 0 24px rgba(0,0,0,.12);}
+  .sidebar.open{transform:translateX(0);}
+  .main{padding:22px 18px 70px;}
+  .grid2,.grid3{grid-template-columns:1fr;}
+  .hero h2{font-size:24px;}
+  .overlay{display:none;position:fixed;inset:62px 0 0 0;background:rgba(0,0,0,.35);z-index:44;}
+  .overlay.show{display:block;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="目录">&#9776;</button>
+  <div class="brand-mark">星</div>
+  <h1>星火之光 · 生成式引擎用户操作指南</h1>
+  <span class="sub">SparklightAI GeoLook · 全流程 GEO 实施平台</span>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="wrap">
+  <aside class="sidebar" id="sidebar">
+    <div class="toc-title">目录导航</div>
+    <a href="#intro">一、系统简介：它能帮企业做什么</a>
+    <a href="#prepare">二、使用前准备</a>
+    <a href="#account" class="sub">账号登录与权限</a>
+    <a href="#env" class="sub">环境要求</a>
+    <a href="#flow">三、核心操作流程（按顺序做）</a>
+    <a href="#step1" class="sub">第 1 步 · 接入品牌</a>
+    <a href="#step2" class="sub">第 2 步 · 核对信息</a>
+    <a href="#step3" class="sub">第 3 步 · 查看现状</a>
+    <a href="#step4" class="sub">第 4 步 · 查看诊断</a>
+    <a href="#step5" class="sub">第 5 步 · 执行优化</a>
+    <a href="#step6" class="sub">第 6 步 · 验收效果</a>
+    <a href="#step7" class="sub">第 7 步 · 长期运营</a>
+    <a href="#export">四、导出与分享结果</a>
+    <a href="#faq">五、常见问题与解决办法</a>
+    <a href="#glossary">六、名词小词典</a>
+    <a href="#contact">七、联系与许可</a>
+  </aside>
+
+  <main class="main">
+    <div class="hero">
+      <span class="tag">生成式引擎优化 · Generative Engine Optimization</span>
+      <h2>星火之光 用户操作指南</h2>
+      <p>本指南面向<b>不具备技术背景的企业人员</b>。你只需要会用浏览器、会点鼠标，按照页面上的「下一步」顺序操作，就能完成从接入品牌到查看效果的全过程。不需要写代码，不需要懂服务器。</p>
+      <div class="badges">
+        <span class="badge">纯浏览器操作</span>
+        <span class="badge">无需写代码</span>
+        <span class="badge">自托管 · 数据不出本机</span>
+        <span class="badge">适合代理商 / 企业市场团队</span>
+      </div>
+    </div>
+
+    <blockquote>
+      <b>一句话理解 GEO</b>：GEO 是「生成式引擎优化」。简单说，就是让 <b>豆包、DeepSeek、ChatGPT、Kimi、秘塔</b> 这些 AI 助手在回答用户问题时，<b>主动提到并引用你的品牌</b>。它和我们熟悉的传统 SEO（让百度搜得到你）不同，是面向「AI 回答」的新一代优化。
+    </blockquote>
+
+    <!-- ===== 一、系统简介 ===== -->
+    <section id="intro">
+      <div class="section-head"><div class="num">1</div><h3 class="sec">系统简介：它能帮企业做什么</h3></div>
+      <p class="lead">星火之光（SparklightAI GeoLook）是一个 <b>「让 AI 主动提到你的品牌」的自助平台</b>。它不是只看数据的仪表盘，而是一套能带你从「发现问题」到「解决问题」再到「验收成果」的完整工具。</p>
+
+      <h4>① 它解决什么问题</h4>
+      <p>现在越来越多客户不再用搜索引擎，而是直接问 AI：「有哪些好用的 XX 工具？」「XX 和 YY 哪个好？」如果你的品牌在 AI 的回答里<b>完全没被提到</b>，就等于白白流失了大量潜在客户。星火之光帮你：</p>
+      <ul class="clean check">
+        <li><b>看现状</b>：你的品牌在 17 个 AI 引擎里的被提及情况，是「根本没提你」还是「竞品把你压住了」。</li>
+        <li><b>找原因</b>：为什么 AI 不提你？是官网抓不到、内容缺关键信息、还是该铺的阵地没铺？</li>
+        <li><b>给方案</b>：自动生成一份带「验收标准」的待办清单（工单），告诉你具体该做什么。</li>
+        <li><b>验成果</b>：优化前后自动对比，哪些动作真的让 AI 改了口，一目了然。</li>
+        <li><b>好交付</b>：一键导出给老板看的一页结论、给客户看的诊断报告。</li>
+      </ul>
+
+      <h4>② 适用场景</h4>
+      <div class="grid3">
+        <div class="mini"><h5>品牌市场团队</h5><p style="font-size:13px;color:var(--gray)">定期监测品牌在 AI 回答中的声量，向老板汇报「我们的品牌被 AI 提到几次」。</p></div>
+        <div class="mini"><h5>GEO 服务代理商</h5><p style="font-size:13px;color:var(--gray)">同时管理多个客户项目，批量产出诊断报告与执行方案，作为服务交付物。</p></div>
+        <div class="mini"><h5>无官网的新品牌</h5><p style="font-size:13px;color:var(--gray)">没有官网也能用：用一份产品介绍材料替代，照样能分析、能优化。</p></div>
+      </div>
+
+      <h4>③ 能为企业带来什么价值</h4>
+      <div class="grid3">
+        <div class="mini"><div class="kpi">17<span class="u">个引擎</span></div><h5>覆盖广度</h5><p style="font-size:13px;color:var(--gray)">国内（豆包/DeepSeek/Kimi/智谱等）+ 海外（ChatGPT/Perplexity 等）一起看。</p></div>
+        <div class="mini"><div class="kpi">86%<span class="u">自动验收</span></div><h5>闭环效率</h5><p style="font-size:13px;color:var(--gray)">大部分优化动作由系统自动判定「做完了没」，不靠人工口头确认。</p></div>
+        <div class="mini"><div class="kpi">0<span class="u">元起</span></div><h5>成本可控</h5><p style="font-size:13px;color:var(--gray)">平台本身开源免费；只有调用 AI 引擎抽样时才产生少量 API 费用（也可纯人工免费跑）。</p></div>
+      </div>
+      <div class="note">数据安全提示：所有项目数据都存在你自己的电脑 / 服务器上（<code>work/</code> 文件夹），不经过任何第三方云端。你用得越久，积累的数据越值钱，且完全属于你。</div>
+    </section>
+
+    <!-- ===== 二、使用前准备 ===== -->
+    <section id="prepare">
+      <div class="section-head"><div class="num">2</div><h3 class="sec">使用前准备</h3></div>
+      <p class="lead">在正式操作前，只需确认三件事。技术同事通常会帮你把系统部署好，你拿到的是一个网址（或本机打开的页面）。</p>
+
+      <h4 id="account">① 账号登录与权限</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">打开系统网址（例如本机 <code>http://127.0.0.1:8765</code>，或技术同事给你的远程地址）。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">若是<b>远程访问</b>，首次打开会要求输入「访问令牌」（一串由技术同事提供的字符串）。输入后，浏览器会记住你，之后无需重复输入。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c">进入后你会看到一个工作台界面。左侧是导航菜单，右侧是各个功能页。<b>不需要注册账号</b>——系统默认就是你自己独享的。</div></div>
+      <div class="note">权限说明：本系统没有复杂的角色体系。如果你是被「代理商」服务的客户，你的项目数据由对方隔离管理；你自己操作时看到的都是你有权限的项目。</div>
+
+      <h4 id="env">② 环境要求（技术同事已就绪则跳过）</h4>
+      <p>如果你是技术人员，或需要自己把系统跑起来，最低要求如下：</p>
+      <ul class="clean check">
+        <li>一台电脑或服务器（macOS / Linux / Windows 皆可，Windows 用 WSL）</li>
+        <li>Python <b>3.9 及以上</b>版本</li>
+        <li>三个基础依赖：<code>requests</code>、<code>beautifulsoup4</code>、<code>lxml</code>（一行命令装好）</li>
+      </ul>
+      <div class="warn">普通企业用户无需关心这部分。如果你只是在浏览器里使用系统，环境已由部署人员准备好，直接跳到下一章。</div>
+
+      <h4>③ 准备什么资料</h4>
+      <ul class="clean">
+        <li><b>品牌官网网址</b>：例如 <code>https://你的品牌.com</code>。系统会据此自动分析你的品牌信息。</li>
+        <li><b>（可选）产品介绍材料</b>：如果没有官网，准备一份产品/品牌的介绍文字（Word、记事本都行），后面会用到。</li>
+        <li><b>（可选）AI 引擎 Key</b>：想让系统「自动抽样」多个 AI，需要准备 1 个或多个 AI 平台的 API Key（看板里点几下就能填）。<b>不填也能用</b>——只是抽样改为人工粘贴方式。</li>
+      </ul>
+    </section>
+
+    <!-- ===== 三、核心操作流程 ===== -->
+    <section id="flow">
+      <div class="section-head"><div class="num">3</div><h3 class="sec">核心操作流程（按顺序做）</h3></div>
+      <p class="lead">下面是以「看板页面」为准的标准操作流程。<b>强烈建议第一次按这个顺序走一遍</b>。每一步都标了你在页面上会看到什么、该点哪里。</p>
+
+      <div class="card">
+        <h5>📌 整体流程一览</h5>
+        <p style="font-size:14.5px">接入品牌 → 核对信息 → 查看现状 → 查看诊断 → 执行优化 → 验收效果 → 长期运营。前两步是「建项目」，后面是「持续运营」。每个项目相互独立，互不干扰。</p>
+      </div>
+
+      <!-- 第1步 -->
+      <h4 id="step1">第 1 步 · 接入品牌（创建你的第一个项目）</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c"><b>首次进入自动引导</b>：打开页面后，系统会直接弹出「接入引导」窗口。在「品牌官网域名」一栏填入你的官网网址。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c"><b>选择目标市场</b>：勾选你要覆盖的市场——<b>国内</b>（面向豆包/DeepSeek 等中文 AI）、<b>海外</b>（面向 ChatGPT/Perplexity 等）、或 <b>两者都要</b>。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c"><b>点击「创建并开始自动引导」</b>：系统会在后台自动跑第一期的分析（抓官网、做体检、抽样 AI 回答等）。<span class="uibtn ghost" style="margin-left:8px">创建并开始自动引导</span></div></div>
+      <div class="step"><div class="badge-n">4</div><div class="step-c"><b>不用守着页面</b>：分析需要几分钟到半小时。你可以关掉页面去忙别的，任务会在后台继续跑完，下次打开就能看到结果。</div></div>
+      <div class="note">没有官网怎么办？在第 1 步选择「无官网模式」，然后上传 / 粘贴一份产品介绍材料即可。其余步骤完全一样。</div>
+
+      <!-- 第2步 -->
+      <h4 id="step2">第 2 步 · 人工核对信息（约 10 分钟，很重要）</h4>
+      <p>系统会从官网自动抽取你的品牌「事实库」（名称、别名、关键数字、主营业务等）。建议你花 10 分钟核对一下，<b>这步直接影响后续准确度</b>。</p>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入侧栏 <b>「品牌事实库」</b>，检查系统自动提取的信息对不对：品牌名、常用别名（如「星火」「星火之光」都要列出）、核心产品、关键数据。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">发现缺少别名或写错，直接点「编辑」补上。<b>漏填别名会导致系统低估你的真实提及率</b>（AI 提到别名时系统没认出来）。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c">进入 <b>「问题库」</b>，扫一眼题目是否像真实客户的问法。如果题目太生硬，可手动增删。</div></div>
+
+      <!-- 第3步 -->
+      <h4 id="step3">第 3 步 · 查看现状（你的品牌在 AI 里什么样）</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入 <b>「总览」</b> 页：顶部一句话结论 + 五项健康分，快速知道品牌在 AI 里的整体表现。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">进入 <b>「引擎表现」</b>：逐个 AI 引擎查看。点任意一条 <b>「样本回放」</b> 能看到 AI 回答的原文，并且你的品牌被高亮标出——一眼看出 AI 到底提没提你、怎么提的。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c">进入 <b>「竞品对比」</b>：看对手在哪些引擎最强。系统会直接告诉你「对手最强的那个引擎，就是你该去建设的阵地」。发现 AI 说错了你品牌的地方，点 <b>「记一条事实偏差」</b> 即可。</div></div>
+
+      <!-- 第4步 -->
+      <h4 id="step4">第 4 步 · 查看诊断（为什么 AI 不提你）</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入 <b>「站点体检」</b>：系统按「能不能访问 → 能不能读懂 → 能不能引用」的顺序，逐项检查你的官网。点「缺块」会直接跳到对应的修复工单。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">进入 <b>「差距诊断」</b>：看三类缺口——内容缺口（该写什么没写）、阵地缺口（该铺哪些平台没铺）、事实偏差（AI 对你的认知错了）。系统已按「先修哪个」排好顺序。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c">进入 <b>「阵地地图」</b>：系统列出 19 类该布局的平台（百科、榜单站、知乎、公众号、技术社区等），每个都写清「建什么、建多少、谁来做」。</div></div>
+
+      <!-- 第5步 -->
+      <h4 id="step5">第 5 步 · 执行优化（该做什么、怎么做）</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入 <b>「行动计划」</b>：这是系统生成的待办清单（工单）。按 P0（最紧急）→ P1（次紧急）顺序领取。每条工单都写清：依据、负责角色、工作量、时间窗口、<b>验收标准</b>。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">进入 <b>「内容工作台」</b>：从选题池挑题目写稿。左侧给你「必须包含的关键信息」，右侧实时显示这篇稿子「被 AI 引用的可能性」预检分。分数到 B 以上再发布。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c">进入 <b>「分发清单」</b>：勾选这篇内容要发到哪些平台（知乎、公众号、技术社区等），发完打勾确认。</div></div>
+      <div class="step"><div class="badge-n">4</div><div class="step-c">进入 <b>「部署资产」</b>：按提示把 <code>llms.txt</code>、结构化数据（JSON-LD）等文件，交给技术同事挂到官网对应位置。这些是专门帮 AI「读懂你」的标记。</div></div>
+      <div class="warn">发布永远需要人工确认：系统不会自动外发任何内容到公开平台。涉及需要官方账号的平台（如公众号），每次发布都需你手动点一下确认，安全可控。</div>
+
+      <!-- 第6步 -->
+      <h4 id="step6">第 6 步 · 验收效果（做的有没有用）</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入 <b>「设置 → 运行任务」</b>，点击 <b>「自动验收」</b>：系统会重新抓取你的官网，自动判定第 5 步的工单「做完了没」。大部分工单无需你手动确认。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">进入 <b>「效果验收」</b>：看「优化前 vs 优化后」的逐题对比。哪里真的让 AI 改了口，哪里没变化，一目了然。</div></div>
+
+      <!-- 第7步 -->
+      <h4 id="step7">第 7 步 · 长期运营（让效果持续）</h4>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入 <b>「设置」</b> 开启 <b>「周期复跑」</b>：选每 7 / 14 / 30 天自动跑一期，相当于定期「体检 + 抽样」，无需每次手动操作。</div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">进入 <b>「报告与交付」</b>：随时生成月报（给老板）或客户交付包（给客户）。多品牌用户可在侧栏一键切换不同项目。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c"><b>无官网 / 无 API 的引擎也能用</b>：导出一张「人工采样表」，你在豆包、ChatGPT 网页版等手动问几个问题、把回答粘回去，系统照样纳入统计。</div></div>
+    </section>
+
+    <!-- ===== 四、导出与分享 ===== -->
+    <section id="export">
+      <div class="section-head"><div class="num">4</div><h3 class="sec">导出与分享结果</h3></div>
+      <p class="lead">做好分析或运营一段时间后，你可以把成果导出，用于内部汇报或对客交付。</p>
+      <div class="step"><div class="badge-n">1</div><div class="step-c">进入 <b>「报告与交付」</b> 页面，系统提供三类产出：
+        <ul class="clean" style="margin-top:8px">
+          <li><b>给老板的一页结论</b>：精简版，适合向上汇报。</li>
+          <li><b>给执行团队的分批方案</b>：按优先级排好的执行清单。</li>
+          <li><b>给客户的完整交付包</b>：含诊断报告、优化方案、执行方案、工单表（HTML + CSV）。</li>
+        </ul>
+      </div></div>
+      <div class="step"><div class="badge-n">2</div><div class="step-c">点击对应按钮即可 <b>下载 / 导出</b>。HTML 报告可直接发给客户用浏览器打开；CSV 工单表可导入 Excel 跟进。</div></div>
+      <div class="step"><div class="badge-n">3</div><div class="step-c"><b>分享给同事</b>：如果是远程部署，把系统网址 + 访问令牌发给同事，对方即可在自己的浏览器里查看同样的数据（注意令牌等同密码，勿外泄）。</div></div>
+      <div class="note">数据备份小技巧：项目数据都存在 <code>work/</code> 文件夹里（JSON / Markdown 文件）。用 U 盘拷走、或用网盘同步这个文件夹，就是最朴素的备份方式。</div>
+    </section>
+
+    <!-- ===== 五、FAQ ===== -->
+    <section id="faq">
+      <div class="section-head"><div class="num">5</div><h3 class="sec">常见问题与解决办法</h3></div>
+
+      <details class="fold" open>
+        <summary>Q1：我不会写代码，能用这个系统吗？</summary>
+        <div class="fold-body">
+          <p><b>完全可以。</b>本指南描述的全部操作都在浏览器里用鼠标点选完成，不需要写任何代码。技术同事负责把系统部署好，你拿到网址即可使用。如果部署环境由你方 IT 负责，把本指南「环境要求」一节转发给他们即可。</p>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q2：打开页面提示「需要令牌 / 无法访问」怎么办？</summary>
+        <div class="fold-body">
+          <ul>
+            <li>如果是<b>远程地址</b>，首次访问需输入「访问令牌」。找帮你部署的技术同事要这串字符串，输入即可。</li>
+            <li>如果令牌丢了，让技术同事重新生成（在服务器上执行 <code>export GEOLOOK_TOKEN=$(openssl rand -hex 16)</code> 后重启）。</li>
+            <li>如果是<b>本机</b>打开 <code>http://127.0.0.1:8765</code> 提示无法访问，说明看板没启动。让技术同事启动：在系统目录执行 <code>python3 scripts/geo.py ui</code>。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q3：不配 AI 引擎 Key 能用吗？</summary>
+        <div class="fold-body">
+          <p><b>能用。</b>一个 Key 都不配，系统照样可以：抓官网、做体检、生成工单、产出资产、导出人工采样表。只是「自动抽样 AI 回答」这一步会跳过——你可以改用「导出采样表 → 在豆包/ChatGPT 网页版手动问并粘贴回答 → 回灌」的方式，结果与自动抽样完全通用。配一个国内引擎 Key（如 DeepSeek 或智谱）后，会额外解锁「AI 自动推导问题库」和「AI 写稿初稿」两项能力。</p>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q4：为什么同一道题，AI 每次回答都不一样？数据准吗？</summary>
+        <div class="fold-body">
+          <p>单条 AI 回答本身就有随机性，这是正常现象。系统的指标<b>从来不看单条回答</b>，而是看「几十道题 × 多个引擎」的整体比例，单题抖动会被摊平。同时：</p>
+          <ul>
+            <li>每个引擎用的模型版本固定，跨期比较时才公平；</li>
+            <li>可用 <code>sample --repeat N</code>（技术参数）给每题多抽几次，样本越密越稳；</li>
+            <li>工单验收靠「重抓官网」这类确定性信号，不赌单次抽样。</li>
+          </ul>
+          <p>所以它测的是<b>分布趋势</b>而非单次定值——这恰恰更接近真实用户每次问 AI 得到的随机回答。</p>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q5：分析结果里「疑似负面」是什么意思？要紧吗？</summary>
+        <div class="fold-body">
+          <p>当 AI 在回答中提及你的品牌时，如果措辞偏负面（如「某品牌曾被曝……」），系统会打上「疑似负面」标记，作为<b>线索提示</b>。请注意：这是机器初步判断，<b>最终定性仍需人工复核</b>，不能直接当结论。建议把它当作「值得人工看一眼」的待办，而非已确认的负面舆情。</p>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q6：可以同时管理多个品牌 / 客户吗？</summary>
+        <div class="fold-body">
+          <p><b>可以。</b>一个系统实例可管理多个项目，数据互相隔离。侧栏顶部可切换不同项目。这对 GEO 服务代理商尤其有用：每个客户一个项目，各自独立分析、各自导出交付包。</p>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q7：我的数据安全吗？会泄露给别家吗？</summary>
+        <div class="fold-body">
+          <p><b>数据完全在你这边。</b>所有项目数据都存在你自己的电脑 / 服务器 <code>work/</code> 目录里（JSON / Markdown 文件），不经过任何第三方云端。系统本身无数据库、无强制账号，单机自托管。对外发布的动作（如发公众号）每次都需你手动确认，没有任何自动外发路径。</p>
+        </div>
+      </details>
+
+      <details class="fold">
+        <summary>Q8：系统说「配置失败 / 服务未响应」怎么办？</summary>
+        <div class="fold-body">
+          <p>多数情况下这<b>不是你操作的问题</b>，而是：① 看板服务进程被关掉了（让技术同事重新启动）；② 密钥文件写错了位置（应写在项目对应的 <code>work/&lt;项目&gt;/.env</code>，不是系统根目录）。先确认看板能正常打开，再回来重试配置。</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ===== 六、名词小词典 ===== -->
+    <section id="glossary">
+      <div class="section-head"><div class="num">6</div><h3 class="sec">名词小词典</h3></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th style="width:24%">名词</th><th>通俗解释</th></tr></thead>
+          <tbody>
+            <tr><td><b>GEO</b></td><td>生成式引擎优化。让 AI 助手（而非搜索引擎）在回答时主动提到你的品牌。</td></tr>
+            <tr><td><b>引擎 / AI 引擎</b></td><td>指豆包、DeepSeek、ChatGPT、Kimi、秘塔等会回答用户问题的 AI 产品。</td></tr>
+            <tr><td><b>提及率</b></td><td>在问某类问题时，AI 提到你品牌的次数占比。越高说明你在 AI 里越「存在」。</td></tr>
+            <tr><td><b>品牌事实库</b></td><td>系统从你官网抽取的「关于你品牌的权威信息」，是后续所有分析的唯一事实口径。</td></tr>
+            <tr><td><b>工单</b></td><td>系统生成的待办优化项，每条都带明确的「验收标准」，做没做完系统能自动判定。</td></tr>
+            <tr><td><b>阵地</b></td><td>AI 会去引用内容的平台（百科、知乎、公众号、榜单站等）。你的信息铺得越广，被 AI 引用的机会越大。</td></tr>
+            <tr><td><b>采样 / 抽样</b></td><td>系统去问 AI 一堆问题、收集它的回答，用来统计你的品牌被提到多少。</td></tr>
+            <tr><td><b>自动验收</b></td><td>优化动作做完后，系统重新检查并自动判定「这条工单完成没」。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== 七、联系与许可 ===== -->
+    <section id="contact">
+      <div class="section-head"><div class="num">7</div><h3 class="sec">联系与许可</h3></div>
+      <ul class="clean">
+        <li><b>技术支持 / 部署协助</b>：请联系为你部署系统的技术同事或服务提供商。</li>
+        <li><b>问题 / 建议 / 合作</b>：邮箱 <a href="mailto:bingqiang2008@gmail.com">bingqiang2008@gmail.com</a>，或提 <a href="https://github.com/aigclink/geolook/issues" target="_blank" rel="noopener">issue</a>。</li>
+        <li><b>许可</b>：MIT License（开源免费）。</li>
+      </ul>
+      <div class="note">本指南面向非技术企业用户编写，侧重于「怎么用」。若你需要技术部署细节（命令行、环境变量、远程部署），可参考同套模板的《业务操作指南》技术章节，或联系技术同事。</div>
+    </section>
+
+    <div class="footer">
+      <div class="sign">星火之光 AI · 诚明，星火聚能，赋能成长。官网：sparklight-ai.com</div>
+      <div class="meta">本文档基于 SparklightAI GeoLook 平台能力整理 · 面向企业用户的操作版 · 自包含离线 HTML</div>
+    </div>
+  </main>
+</div>
+
+<button id="topBtn" aria-label="回到顶部">&#8593;</button>
+
+<script>
+/* ===== 移动端侧栏 ===== */
+(function(){
+  var btn=document.getElementById('menuBtn');
+  var side=document.getElementById('sidebar');
+  var ov=document.getElementById('overlay');
+  function toggle(){ side.classList.toggle('open'); ov.classList.toggle('show'); }
+  btn.addEventListener('click',toggle);
+  ov.addEventListener('click',toggle);
+  side.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){if(window.innerWidth<=980){side.classList.remove('open');ov.classList.remove('show');}});});
+})();
+
+/* ===== 目录滚动高亮 (scroll-spy) ===== */
+(function(){
+  var links=Array.prototype.slice.call(document.querySelectorAll('.sidebar a'));
+  var map={};
+  links.forEach(function(a){var id=a.getAttribute('href').slice(1);var s=document.getElementById(id);if(s)map[id]={link:a,sec:s};});
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active');});
+        var id=e.target.id; if(map[id]) map[id].link.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px',threshold:0});
+  Object.keys(map).forEach(function(id){obs.observe(map[id].sec);});
+})();
+
+/* ===== 回到顶部 ===== */
+(function(){
+  var btn=document.getElementById('topBtn');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>500) btn.style.display='block'; else btn.style.display='none';
+  });
+  btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>

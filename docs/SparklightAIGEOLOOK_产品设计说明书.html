@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>星火之光 SparklightAIGEOLOOK · 产品设计说明书</title>
+<style>
+  :root{--bg:#0d1020;--panel:#161a2e;--panel2:#1d2238;--border:#2c3252;
+    --text:#e8ebf5;--muted:#9aa3c4;--accent:#7c5cff;--spark:#ff9d3c;--ok:#4ade80;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.7;}
+  .hero{padding:48px 24px 36px;text-align:center;
+    background:radial-gradient(1200px 400px at 50% -10%,rgba(124,92,255,.28),transparent),
+               radial-gradient(800px 300px at 80% 20%,rgba(255,157,60,.18),transparent),
+               linear-gradient(180deg,#10142b,#0d1020);border-bottom:1px solid var(--border);}
+  .hero .spark{font-size:13px;letter-spacing:.3em;color:var(--spark);text-transform:uppercase;}
+  .hero h1{margin:8px 0 6px;font-size:30px;background:linear-gradient(90deg,#fff,#bcaaff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .sub{color:var(--muted);font-size:13px;}
+  .wrap{max-width:1000px;margin:0 auto;padding:28px 18px 60px;}
+  .sec{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+    padding:22px 24px;margin-bottom:20px;box-shadow:0 6px 24px rgba(0,0,0,.3);}
+  .sec h2{margin:0 0 10px;font-size:19px;color:#fff;border-left:4px solid var(--spark);padding-left:12px;}
+  .sec h3{font-size:15px;color:#cdbcff;margin:16px 0 6px;}
+  .sec p{font-size:14px;margin:8px 0;color:#d7dbeb;text-align:justify;}
+  .sec ul{margin:8px 0;padding-left:20px;}
+  .sec li{font-size:13.5px;margin:5px 0;color:#d7dbeb;}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}
+  th,td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:var(--panel2);color:var(--accent);font-weight:600;}
+  tr:nth-child(even) td{background:rgba(124,92,255,.05);}
+  code{background:#0a0d1c;padding:1px 6px;border-radius:5px;color:#c7d2fe;font-size:12px;}
+  .tag{display:inline-block;background:rgba(255,157,60,.15);color:var(--spark);border:1px solid rgba(255,157,60,.4);
+    border-radius:6px;padding:1px 8px;font-size:11px;margin-left:6px;}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:24px;border-top:1px solid var(--border);}
+</style></head><body>
+<div class="hero">
+  <div class="spark">★ Sparklight · AI GEO Platform</div>
+  <h1>星火之光 SparklightAIGEOLOOK</h1>
+  <div class="sub">产品设计说明书 · 基于 GEOLOOK 的开源架构定制开发 · 2026-08-22</div>
+</div>
+<div class="wrap">
+
+<p>本说明书面向产品、研发与交付团队，基于开源项目 GEOLOOK 的真实架构能力，定义「星火之光 SparklightAIGEOLOOK」的定制开发方案。GEOLOOK 是端到端星火之光生成式引擎优化（GEO）自托管平台：状态分析 → 诊断 → 策略 → 执行工单 → 实施 → 验收。星火之光在其之上，强化 AI 原生能力、品牌化交付与多租户协作，形成一套可对外商业化的 GEO 服务平台。</p>
+<div class="sec"><h2>1. 产品定位</h2>
+<p>GEOLOOK 解决了「AI 从不提你、不知为何不提、建议落不了地、做了没验证、交付打包难」五大问题，其核心价值是<b>「GEO 的终点不是排名，是 AI 答案里那句话是不是按你的口径说的」</b>——最小单位是<b>可被抽取的事实块</b>而非页面。</p>
+<p>星火之光的定位升级为：<b>面向品牌方与 GEO 服务商的 AI 原生 GEO 增长平台</b>。在保留 GEOLOOK「监测→诊断→工单→资产→自动验收→交付」完整闭环与数据本地化、零编造纪律的基础上，叠加四层定制能力：① 多模型 AI 智能体（自动扩词/初稿/事实核验）；② 品牌化白皮书级交付物与多租户客户空间；③ 实时仪表盘与协作工作流；④ 国内/海外双市场策略模板与行业知识库。</p>
+<table><thead><tr><th>对比维度</th><th>GEOLOOK 基座</th><th>星火之光定制</th></tr></thead><tbody><tr><td>维度</td><td>GEOLOOK（基座）</td><td>星火之光 SparklightAIGEOLOOK（定制）</td></tr><tr><td>核心定位</td><td>开源自托管 GEO 实现平台</td><td>商业化 AI 原生 GEO 增长平台</td></tr><tr><td>用户</td><td>个人/代理商/咨询师</td><td>品牌方 + 服务商 + 内部增长团队</td></tr><tr><td>AI 能力</td><td>单 LLM 初稿/推导</td><td>多智能体编排 + 行业知识 + 自动事实核验</td></tr><tr><td>交付</td><td>单项目三份 HTML/CSV</td><td>品牌化白皮书 + 多租户空间 + 月报订阅</td></tr><tr><td>协作</td><td>单机无账号</td><td>团队账号/角色/工单指派/评论</td></tr><tr><td>品牌</td><td>无（白牌）</td><td>星火之光全链路品牌视觉</td></tr></tbody></table>
+<div class="sec"><h2>2. 目标用户与场景</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>品牌增长团队</b>：自有官网/小程序，需持续提升在 ChatGPT、豆包、DeepSeek 等 17 个引擎中的提及与引用。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>GEO/SEO 服务商</b>：同时服务多个客户，需要多租户空间、批量复跑与可白标交付包。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>内容/公关团队</b>：基于「可抽取事实块」方法论，规模化产出被 AI 引用友好的内容资产。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>出海企业</b>：国内 + 海外双市场的并行 GEO 战场，需要分市场指标与渠道地图。</li>
+<table><thead><tr><th>角色</th><th>核心诉求</th><th>对应模块</th></tr></thead><tbody><tr><td>角色</td><td>核心诉求</td><td>星火之光对应模块</td></tr><tr><td>CMO/增长负责人</td><td>AI 可见性是否提升、ROI 可量化</td><td>实时仪表盘 + 月报订阅 + 趋势对比</td></tr><tr><td>GEO 运营</td><td>批量客户、工单流转、不漏项</td><td>多租户空间 + 工单指派 + 协作评论</td></tr><tr><td>内容编辑</td><td>写什么能被引用、初稿不出错</td><td>内容工作台 + AI 初稿 + 编造风险 lint</td></tr><tr><td>技术/站长</td><td>站点是否被 AI 抓取器正确读取</td><td>四层体检 + WAF/CDN 差异探测 + 资产部署</td></tr></tbody></table>
+<div class="sec"><h2>3. 功能架构（基于 GEOLOOK 管线扩展）</h2>
+<p>沿用 GEOLOOK 的九步管线（建项目→抓取→体检→推导底座→采样→工单→资产→报告→验收→交付），在每一层叠加星火之光的定制模块，形成六层架构：</p>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>L1 接入层</b>：3 步品牌接入向导（URL + 市场）、无站点模式（电商/线下品牌）、多租户空间切换。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>L2 数据底座层</b>：复用 crawl/audit/bootstrap；新增<b>行业知识库</b>与<b>品牌事实库多版本管理</b>。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>L3 智能采样层</b>：复用 17 引擎采样 + 样本库人工校正；新增<b>多智能体采样编排</b>（自动选题/复核/降噪）。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>L4 诊断策略层</b>：复用四层依赖链体检、差距诊断、19 渠道地图；新增<b>AI 诊疗建议生成</b>与<b>竞品情报雷达</b>。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>L5 执行交付层</b>：复用工单/资产/发布/验收；新增<b>协作工单流</b>、<b>品牌化白皮书</b>、<b>月报订阅</b>。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>L6 展示层</b>：复用单文件暗色四段主线 UI；升级为<b>星火之光品牌视觉系统</b> + 实时仪表盘 + 客户只读视图。</li>
+<table><thead><tr><th>GEOLOOK 基座能力（保留）</th><th>星火之光定制模块</th></tr></thead><tbody><tr><td>GEOLOOK 现有（保留）</td><td>星火之光新增（定制）</td></tr><tr><td>现状/状态总览 · 引擎表现 · 竞品对比 · 问题库 · 样本库</td><td>实时 AI 可见性仪表盘 · 多租户客户空间</td></tr><tr><td>诊断：四层体检 · 差距 · 19 渠道地图 · 品牌事实库</td><td>AI 诊疗建议 · 竞品情报雷达 · 行业知识库</td></tr><tr><td>提升：行动计划 · 内容工作台 · 资产部署 · 发布</td><td>协作工单流 · 工单指派/评论 · 一键品牌化白皮书</td></tr><tr><td>成效：验收 · 报告与交付</td><td>月报订阅 · 客户只读视图 · 趋势对比</td></tr></tbody></table>
+<div class="sec"><h2>4. 核心业务流程</h2>
+<p>主流程在 GEOLOOK 的九步管线上扩展出「AI 智能体编排」与「品牌化交付」两个新环节：</p>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>接入</b>：3 步向导 → 自动推断品牌名/市场 → 创建多租户客户空间。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>底座构建</b>：抓取 + 六维体检 + 自动推导品牌事实/竞品/问题库（复用 bootstrap，新增行业知识库增强）。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>智能采样</b>：多智能体自动选题 → 17 引擎采样（API + 浏览器插件）→ 样本库人工校正 → 自动降噪。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>AI 诊疗</b>（新增）：基于 method.md 实测口径，由诊疗智能体生成诊断结论、修复顺序与策略建议。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>执行</b>：协作工单流（指派/评论/风险分级）→ 内容工作台（AI 初稿 + 编造风险 lint）→ 资产部署 → 发布。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> <b>验收交付</b>：自动验收（回归重开）→ <b>品牌化白皮书 + 月报订阅</b>（新增）→ 客户只读视图。</li>
+<table><thead><tr><th>环节</th><th>GEOLOOK 现状</th><th>星火之光优化点</th></tr></thead><tbody><tr><td>环节</td><td>GEOLOOK 现状</td><td>星火之光优化点</td></tr><tr><td>采样</td><td>单轮、人工复检为主</td><td>多智能体编排、自动选题/复核/降噪</td></tr><tr><td>诊断</td><td>规则 + 人工判读</td><td>AI 诊疗建议生成、竞品情报雷达</td></tr><tr><td>工单</td><td>单人、本地 JSON</td><td>协作工单流、指派/评论/角色</td></tr><tr><td>交付</td><td>三份 HTML/CSV</td><td>品牌化白皮书、月报订阅、客户视图</td></tr></tbody></table>
+<div class="sec"><h2>5. 功能详细说明（新增与优化模块）</h2>
+<div class="sec"><h2>5.1 多智能体 AI 引擎（新增·核心）</h2>
+<p>在 GEOLOOK 仅用单一 LLM 出初稿的基础上，构建可编排的智能体集群，统一接入已配置的引擎 Key：</p>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 扩词智能体：基于百度下拉/Google 补全 + 行业知识库，自动产出高意图候选题并标注意图分组。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 初稿智能体：基于 content-patterns 模板生成可引用内容大纲与初稿，强制过编造风险 lint。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 事实核验智能体：对照品牌事实库（A–E 证据等级）自动标记初稿中无来源/存疑数字，阻断编造。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 诊疗智能体：将体检四层链 + 样本库指标，生成可读诊断结论与修复优先级（追到 method.md 数字出处）。</li>
+<div class="sec"><h2>5.2 行业知识库（新增）</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 按行业（SaaS/电商/医疗/教育…）预置信源权重、问题模板、竞品维度，使新项目 bootstrap 更准更快。</li>
+<div class="sec"><h2>5.3 多租户客户空间（新增）</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 团队账号 + 角色（管理员/运营/编辑/只读客户）；每客户独立 work/<slug>/ 空间，互不越权。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 客户只读视图：可分享链接（带 token）查看仪表盘与月报，无编辑权限——对应 GEOLOOK 的公网 token 机制。</li>
+<div class="sec"><h2>5.4 协作工单流（优化）</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 工单由本地 tasks.json 升级为带<b>指派/评论/状态流/风险分级</b>的协作对象；回归自动重开保留。</li>
+<div class="sec"><h2>5.5 品牌化白皮书与月报（优化·交付）</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 三份基础交付物升级为统一的<b>星火之光白皮书</b>视觉（封面/品牌色/结论先行/可引用证据链）。</li>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 月报订阅：定时生成并分发（邮件 + 客户只读链接），含 delta、信源 Top、大盘对照。</li>
+<div class="sec"><h2>5.6 实时仪表盘与竞品雷达（优化·展示）</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 现状总览升级为实时卡片（健康分/提及率/引用份额/阵地/任务/内容），新增<b>竞品情报雷达</b>图。</li>
+<div class="sec"><h2>5.7 品牌视觉系统（新增·全链路）</h2>
+<li style="list-style:none;margin:6px 0;"><span class="tag">●</span> 统一「星火之光」暗色科技风视觉：深空蓝紫底 + 星火橙金强调色 + 火花/光晕图标语言，覆盖 UI、白皮书、月报。</li>
+<div class="sec"><h2>6. 技术可行性</h2>
+<p>星火之光以 GEOLOOK 为基座，复用其已验证的技术栈与纪律，新增模块均在同栈内可落地：</p>
+<table><thead><tr><th>能力</th><th>GEOLOOK 现状</th><th>星火之光实现路径</th><th>可行性</th></tr></thead><tbody><tr><td>能力</td><td>GEOLOOK 现状</td><td>星火之光实现路径</td><td>可行性</td></tr><tr><td>运行环境</td><td>Python 3.9+ / 标准库 http.server / 零外部依赖（除 requests/bs4/lxml）</td><td>沿用；新增多租户加一层账号中间件</td><td>高</td></tr><tr><td>AI 接入</td><td>单 LLM（已配 DeepSeek/GLM 等 Key）</td><td>多智能体统一调用同一批 Key，加编排层</td><td>高</td></tr><tr><td>数据本地化</td><td>work/ 下纯文件，git 即备份</td><td>沿用，加多租户目录隔离</td><td>高</td></tr><tr><td>不编造纪律</td><td>事实仅来自站点/材料，标「待确认」</td><td>事实核验智能体强化该纪律</td><td>高</td></tr><tr><td>公网访问</td><td>GEOLOOK_TOKEN + 0.0.0.0 绑定 + 反代</td><td>复用做客户只读视图</td><td>高</td></tr><tr><td>前端</td><td>单文件 ui.html 零依赖</td><td>同栈升级品牌视觉（无框架）</td><td>高</td></tr><tr><td>采样</td><td>17 引擎 + 浏览器插件</td><td>智能体编排复用现有采样层</td><td>高</td></tr></tbody></table>
+<p><b>风险与边界（继承 GEOLOOK 设计原则）</b>：不承诺任何平台必引某页；不绕过平台限制批量采集/模拟登录；AI 初稿与事实必须人工复核；采样频率克制、遵守 ToS。这些边界在星火之光的智能体层同样强制。</p>
+<div class="sec"><h2>7. 实施路径与里程碑</h2>
+<table><thead><tr><th>阶段</th><th>周期</th><th>目标</th><th>交付物</th></tr></thead><tbody><tr><td>阶段</td><td>周期</td><td>目标</td><td>交付物</td></tr><tr><td>M1 品牌化基座</td><td>第 1–3 周</td><td>UI 品牌视觉系统 + 说明书/白皮书模板</td><td>星火之光视觉规范、白皮书模板</td></tr><tr><td>M2 多智能体引擎</td><td>第 3–6 周</td><td>扩词/初稿/事实核验/诊疗四个智能体</td><td>智能体编排模块、lint 集成</td></tr><tr><td>M3 协作与多租户</td><td>第 6–9 周</td><td>账号角色、工单协作流、客户空间</td><td>多租户后端、协作工单 UI</td></tr><tr><td>M4 交付与展示</td><td>第 9–11 周</td><td>月报订阅、实时仪表盘、竞品雷达</td><td>月报引擎、客户只读视图</td></tr><tr><td>M5 行业包与上线</td><td>第 11–13 周</td><td>行业知识库 + 公网部署 + 灰度</td><td>行业包、部署文档、上线</td></tr></tbody></table>
+<p>每阶段均以「可运行、可演示、可回退」为验收标准；M3 之前的智能体与品牌模块均可在单机 GEOLOOK 上先行验证，降低集成风险。</p>
+<div class="sec"><h2>附录 A · 与 UI 设计图对应关系</h2>
+<table><thead><tr><th>说明书模块</th><th>UI 设计图页面</th></tr></thead><tbody><tr><td>说明书模块</td><td>UI 设计图页面</td></tr><tr><td>5.6 实时仪表盘与竞品雷达</td><td>页面 ① 星火总览仪表盘</td></tr><tr><td>5.1 多智能体 AI 引擎</td><td>页面 ② AI 智能体工作台</td></tr><tr><td>5.2/5.4 行业知识库 + 协作工单</td><td>页面 ③ 工单协作与行业包</td></tr><tr><td>5.5 品牌化白皮书与月报</td><td>页面 ④ 品牌化交付白皮书</td></tr><tr><td>7 里程碑</td><td>页面 ⑤ 实施路线图</td></tr></tbody></table>
+
+</div>
+<footer>星火之光 SparklightAIGEOLOOK · 产品设计说明书 · 本文档与 UI 设计图一一对应 · 2026-08-22</footer>
+</body></html>

@@ -1,0 +1,10 @@
+﻿python.exe : Traceback (most recent call last):
+所在位置 C:\Users\Administrator\AppData\Local\Temp\genie-ps-1789708999870-fxpq34.ps1:813 字符: 64
++ ... flow_1.0.2; & "C:\Users\Administrator\.venv-html-to-docx\Scripts\pyth ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'hs_db'
+

@@ -1,0 +1,7 @@
+# GEOLOOK / SparklightAIGEOLOOK 运行依赖
+# 安装： pip install -r requirements.txt
+# 或使用脚本： scripts/ensure-deps.ps1
+requests
+beautifulsoup4
+lxml
+cryptography

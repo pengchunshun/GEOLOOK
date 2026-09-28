@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOLOOK 专业应用指导文档</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#161d2e; --panel-2:#1c2438; --ink:#e8edf6; --muted:#9aa7bd;
+    --line:#27314a; --brand:#4f8cff; --brand-2:#22c1a4; --warn:#ffb454; --danger:#ff6b6b;
+    --ok:#3ddc84; --code-bg:#0b1020;
+    --radius:14px; --shadow:0 8px 30px rgba(0,0,0,.35);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Roboto,Helvetica,Arial,sans-serif;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:linear-gradient(180deg,#0c1018,#0f1420 320px);color:var(--ink);
+    font-family:var(--font);line-height:1.7;font-size:15.5px;-webkit-font-smoothing:antialiased}
+  a{color:var(--brand);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px 80px}
+
+  /* Header */
+  header.hero{background:radial-gradient(1200px 400px at 20% -10%,rgba(79,140,255,.22),transparent),
+    radial-gradient(900px 360px at 90% 0%,rgba(34,193,164,.18),transparent),#10172a;
+    border-bottom:1px solid var(--line);padding:54px 0 40px;margin-bottom:34px}
+  .hero .wrap{padding-bottom:0}
+  .badge{display:inline-block;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--brand-2);border:1px solid rgba(34,193,164,.4);background:rgba(34,193,164,.08);
+    padding:5px 12px;border-radius:999px;margin-bottom:16px}
+  h1{font-size:40px;line-height:1.15;margin:0 0 14px;font-weight:800;letter-spacing:-.5px}
+  .sub{color:var(--muted);font-size:17px;max-width:760px;margin:0}
+  .meta{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;color:var(--muted);font-size:13.5px}
+  .meta b{color:var(--ink);font-weight:600}
+
+  /* TOC */
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(15,20,32,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);margin:-34px 0 30px}
+  nav.toc ul{list-style:none;display:flex;gap:6px;flex-wrap:wrap;margin:0 auto;padding:12px 22px;
+    max-width:1080px}
+  nav.toc a{color:var(--muted);font-size:13.5px;padding:6px 11px;border-radius:8px;display:block}
+  nav.toc a:hover{background:var(--panel-2);color:var(--ink);text-decoration:none}
+
+  /* Sections */
+  section{margin:42px 0;scroll-margin-top:64px}
+  h2{font-size:26px;margin:0 0 6px;font-weight:750;letter-spacing:-.3px;
+    display:flex;align-items:center;gap:12px}
+  h2 .num{font-size:14px;color:var(--brand);border:1px solid var(--line);background:var(--panel);
+    width:34px;height:34px;border-radius:9px;display:inline-flex;align-items:center;justify-content:center;
+    font-family:var(--mono);flex:0 0 auto}
+  h3{font-size:18.5px;margin:26px 0 8px;color:#cdd8ec;font-weight:650}
+  .lead{color:var(--muted);margin:0 0 18px;font-size:15.5px}
+  p{margin:12px 0}
+  hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:22px 24px;box-shadow:var(--shadow)}
+  .grid{display:grid;gap:16px}
+  .grid.c2{grid-template-columns:repeat(2,1fr)}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.grid.c2,.grid.c3{grid-template-columns:1fr}}
+
+  .mod{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--panel-2)}
+  .mod h4{margin:0 0 6px;font-size:15.5px;color:var(--ink);font-family:var(--mono)}
+  .mod .tag{font-size:11.5px;color:var(--brand-2);text-transform:uppercase;letter-spacing:.06em}
+  .mod p{margin:6px 0 0;color:var(--muted);font-size:14px}
+
+  code{font-family:var(--mono);background:var(--code-bg);color:#bcd0ff;
+    padding:2px 7px;border-radius:6px;font-size:13.5px;border:1px solid var(--line)}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+    overflow:auto;font-family:var(--mono);font-size:13px;line-height:1.6;color:#cfe0ff}
+  pre .c{color:#6f7e99} /* comment */
+  pre .k{color:#ffb454} /* key */
+  pre .s{color:#3ddc84} /* string */
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--panel-2);color:#cdd8ec;font-weight:650;font-size:13.5px}
+  tr:last-child td{border-bottom:none}
+  td code{font-size:12.5px}
+
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:18px 0}
+  .flow .step{flex:1;min-width:130px;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:10px;padding:14px;position:relative;margin:4px}
+  .flow .step .n{font-family:var(--mono);color:var(--brand);font-size:12px;letter-spacing:.1em}
+  .flow .step b{display:block;margin:4px 0;font-size:14.5px}
+  .flow .step span{color:var(--muted);font-size:13px}
+  .flow .arrow{display:flex;align-items:center;color:var(--brand-2);padding:0 6px;font-size:18px}
+
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:3px 10px;
+    border-radius:999px;border:1px solid var(--line);background:var(--panel-2);color:var(--muted);margin:2px 4px 2px 0}
+  .pill.ok{color:var(--ok);border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.07)}
+  .pill.warn{color:var(--warn);border-color:rgba(255,180,84,.4);background:rgba(255,180,84,.07)}
+  .pill.danger{color:var(--danger);border-color:rgba(255,107,107,.4);background:rgba(255,107,107,.07)}
+
+  .note{border-left:3px solid var(--brand);background:rgba(79,140,255,.07);
+    padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;color:#cdd8ec;font-size:14.5px}
+  .note.warn{border-color:var(--warn);background:rgba(255,180,84,.07)}
+  .note.danger{border-color:var(--danger);background:rgba(255,107,107,.07)}
+
+  ul.tight{margin:10px 0;padding-left:22px}
+  ul.tight li{margin:6px 0}
+
+  .arch{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+  @media(max-width:820px){.arch{grid-template-columns:1fr}}
+  .arch .layer{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .arch .layer h4{margin:0 0 4px;font-size:14px;color:var(--brand-2)}
+  .arch .layer small{color:var(--muted);font-size:12.5px}
+  .arch .layer ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:13px}
+  .arch .layer li{margin:4px 0}
+
+  footer{color:var(--muted);font-size:13px;text-align:center;margin-top:60px;
+    border-top:1px solid var(--line);padding-top:24px}
+  .kbd{font-family:var(--mono);background:var(--panel-2);border:1px solid var(--line);
+    border-bottom-width:2px;border-radius:6px;padding:1px 7px;font-size:12.5px;color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">GEO · SparklightAI Generative Engine Optimization</span>
+    <h1>GEOLOOK 专业应用指导文档</h1>
+    <p class="sub">面向技术用户与 GEO 顾问的完整操作指南：从项目架构、核心模块，到设计理念、典型场景与落地建议。本指南依据 <code>scripts/</code> 代码实现与 <code>references/method.md</code> 实证口径整理。</p>
+    <div class="meta">
+      <div><b>版本基线</b> · 2026-08</div>
+      <div><b>运行入口</b> · <code>python scripts/geo.py &lt;command&gt;</code></div>
+      <div><b>看板</b> · <code>geo.py ui</code> → http://127.0.0.1:8765/</div>
+      <div><b>CLI</b> · <code>geo.py doctor</code> 自检环境</div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#overview">概述</a></li>
+    <li><a href="#arch">1 · 项目架构</a></li>
+    <li><a href="#modules">2 · 核心模块</a></li>
+    <li><a href="#design">3 · 设计理念</a></li>
+    <li><a href="#scenarios">4 · 典型场景</a></li>
+    <li><a href="#usage">5 · 使用建议</a></li>
+    <li><a href="#workflow">附录 · 工作流</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+
+  <!-- OVERVIEW -->
+  <section id="overview">
+    <p>GEOLOOK 是一套面向"星火之光生成式引擎优化（GEO）"的<strong>可运行方法论</strong>：它把抽象的"让 AI 更懂你的品牌"拆解成一组可被抓取、计算、验收、交付的工程动作。所有评分口径并非拍脑袋，而是来自 <code>references/</code> 中记录的实测数据（如 CNN/GEO、CN-GEO 论文与 citation-lab 实证数字）。</p>
+    <p>工具提供两条使用路径：<strong>可视化看板</strong>（<code>dashboard.py</code>，适合客户演示与团队协作）与<strong>命令行</strong>（<code>geo.py</code>，适合自动化与批量处理）。两者共享同一套 <code>scripts/</code> 业务逻辑，产出统一存放在 <code>work/&lt;slug&gt;/</code> 工作区。</p>
+    <div class="flow">
+      <div class="step"><span class="n">STEP 0</span><b>doctor</b><span>环境自检：依赖 / API Key / 浏览器</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 1</span><b>init</b><span>建项目 + facts 事实卡</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 2</span><b>audit</b><span>页面 GEO 体检 + 评分</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 3</span><b>sample</b><span>AI 答案采样</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 4</span><b>plan</b><span>生成工单</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 5</span><b>generate</b><span>产出资产</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 6</span><b>verify</b><span>自动验收</span></div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="n">STEP 7</span><b>deliver</b><span>交付客户</span></div>
+    </div>
+  </section>
+
+  <!-- 1 ARCH -->
+  <section id="arch">
+    <h2><span class="num">01</span>项目架构说明</h2>
+    <p class="lead">GEOLOOK 采用"薄入口 + 厚逻辑 + 单一真相源"的分层结构。所有命令都经 <code>geo.py</code> 分发，业务逻辑在独立模块中，执行状态集中在 <code>work/&lt;slug&gt;/tasks.json</code>。</p>
+
+    <div class="arch">
+      <div class="layer">
+        <h4>① 入口层</h4>
+        <small>命令分发与交互</small>
+        <ul>
+          <li><code>geo.py</code> — CLI 主入口</li>
+          <li><code>dashboard.py</code> — Web 看板（Flask）</li>
+          <li><code>doctor.py</code> — 环境自检</li>
+          <li><code>webui.py</code> — 看板后端 API</li>
+        </ul>
+      </div>
+      <div class="layer">
+        <h4>② 逻辑层</h4>
+        <small>核心业务能力</small>
+        <ul>
+          <li><code>audit.py</code> — 体检评分</li>
+          <li><code>sample.py</code> — 答案采样</li>
+          <li><code>tasks.py</code> — 工单生成</li>
+          <li><code>generate.py</code> — 资产生成</li>
+          <li><code>verify.py</code> — 自动验收</li>
+          <li><code>report.py</code> / <code>deliver.py</code></li>
+        </ul>
+      </div>
+      <div class="layer">
+        <h4>③ 支撑层</h4>
+        <small>基础设施</small>
+        <ul>
+          <li><code>geolib.py</code> — 公共库 / 抓取 / 配置</li>
+          <li><code>fcntl.py</code> — Windows 文件锁兼容</li>
+          <li><code>config.py</code> — 配置加载</li>
+          <li><code>fetch.py</code> — 抓取器</li>
+          <li><code>tests/</code> — 单元与回归测试</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">工作区产物（work/&lt;slug&gt;/）</h3>
+      <table>
+        <tr><th style="width:34%">路径</th><th>含义</th></tr>
+        <tr><td><code>config.json</code></td><td>项目配置：域名、市场（cn/en/both）、语言、关注竞品</td></tr>
+        <tr><td><code>content/facts.md</code></td><td><b>事实卡</b>：一句话定义、关键数字、适用/不适用场景——评分与资产生成的唯一事实源</td></tr>
+        <tr><td><code>audit.json</code></td><td>页面体检结果 + 0–100 评分 + issue 清单</td></tr>
+        <tr><td><code>samples/</code> · <code>metrics/</code></td><td>各平台 AI 答案采样与可见性指标</td></tr>
+        <tr><td><code>tasks.json</code></td><td><b>单一真相源</b>：工单的生成 / 状态 / 验收回写都在这里</td></tr>
+        <tr><td><code>assets/</code></td><td>llms.txt、JSON-LD、HTML 片段、内容大纲与初稿</td></tr>
+        <tr><td><code>delivery/&lt;日期&gt;/</code></td><td>可直接发给客户的交付包</td></tr>
+      </table>
+    </div>
+
+    <div class="note">设计要点：<code>tasks.json</code> 是"执行状态的唯一真相源"。<code>plan</code> 生成工单、<code>generate</code> 回写资产路径、<code>verify</code> 回写验收状态——三阶段都围绕同一份文件读写，避免多份状态互相打架。</div>
+  </section>
+
+  <!-- 2 MODULES -->
+  <section id="modules">
+    <h2><span class="num">02</span>核心模块功能介绍</h2>
+    <p class="lead">每个模块职责单一、可独立运行，通过 <code>geolib</code> 公共库共享抓取与配置能力。</p>
+
+    <div class="grid c3">
+      <div class="mod"><span class="tag">audit</span><h4>audit.py</h4><p>页面 GEO 体检。把 citation-lab 实证结论变成可计算分数：长度（Top 四分位 1,943 词 vs Bottom 170 词）、结构（标题/段落/列表密度）、抽取块（数字 +61.6%、定义 +57.3%、对比 +55.3%、how-to +41.2%）、对题性（llm_relevance_score，r=0.432 最强预测因子）。</p></div>
+      <div class="mod"><span class="tag">sample</span><h4>sample.py</h4><p>AI 答案采样。把问题库打到各引擎量化"品牌在 AI 答案里的可见性"。三种模式：api（有 API 直跑）、browser（网页端由 Claude 逐条采）、manual（人工粘贴）。关键口径：Web ≠ App，分平台分终端单独记，绝不混算。</p></div>
+      <div class="mod"><span class="tag">tasks</span><h4>tasks.py</h4><p>工单系统。把诊断变成分派/验收/追踪的执行任务。每条工单必须含：依据（追到 method.md 哪条）、负责角色、验收标准、市场。无验收标准的不叫工单叫愿望。内置风险分级（low/watch/high）。</p></div>
+      <div class="mod"><span class="tag">generate</span><h4>generate.py</h4><p>资产生成器。产出到 <code>assets/</code>，中英分开：llms.txt、JSON-LD、定义/FAQ 片段、内容大纲、可选 LLM 初稿。分工原则：<b>结构性资产由代码确定性生成</b>（不漏字段、不写错格式）；<b>正文由 LLM 按大纲写</b>（代码写不出好文案）。</p></div>
+      <div class="mod"><span class="tag">verify</span><h4>verify.py</h4><p>验收闭环。重抓站点 → 跑 checker → 回写 tasks.json 状态。"建议"与"服务"的分界：能自动验收的，不靠人说做完了。支持 site./pages./metrics./external. 四类共 20+ 种校验规则。</p></div>
+      <div class="mod"><span class="tag">report/deliver</span><h4>report.py / deliver.py</h4><p>报告与交付。把一期产出打成可直接发客户的目录：总览 HTML、诊断报告、30/60/90 执行方案、工单表、验收表、资产包。面向客户故不出现内部脚本名，每个结论写清依据，不承诺任何平台必然引用。</p></div>
+    </div>
+
+    <h3>验收规则语法（verify）</h3>
+    <table>
+      <tr><th>类别</th><th>示例规则</th><th>含义</th></tr>
+      <tr><td>site.</td><td><code>site.no_ai_bot_block</code></td><td>robots 不再整站封 AI 抓取器</td></tr>
+      <tr><td>site.</td><td><code>site.llms_txt_valid</code></td><td>llms.txt 抽样链接全部有效且未被封</td></tr>
+      <tr><td>site.</td><td><code>site.avg_score_gte:70</code></td><td>重跑 audit 均分达标</td></tr>
+      <tr><td>pages.</td><td><code>pages.has_jsonld</code></td><td>受影响页面已挂 JSON-LD</td></tr>
+      <tr><td>pages.</td><td><code>pages.block:定义</code></td><td>缺该抽取块的页面数下降 ≥50%</td></tr>
+      <tr><td>metrics.</td><td><code>metrics.mention_rate_gte:cn:0.3</code></td><td>指定市场平均无提示提及率达标</td></tr>
+      <tr><td>external.</td><td><code>external.any:a.com,b.com</code></td><td>采样里出现任一目标域名的引用</td></tr>
+    </table>
+
+    <div class="note warn">相对型指标（如"下降 50%"）用工单的 <code>baseline_count</code>（生成工单时的真实缺口数）做基线，而非凭空设定目标。这是验收可信的关键。</div>
+  </section>
+
+  <!-- 3 DESIGN -->
+  <section id="design">
+    <h2><span class="num">03</span>设计理念与实现逻辑</h2>
+    <p class="lead">GEOLOOK 的底层信念：GEO 不是玄学，是一组可被度量、可被工程化、可被验收的"可见性动作"。</p>
+
+    <div class="grid c2">
+      <div class="card">
+        <h3 style="margin-top:0">① 实证驱动，拒绝拍脑袋</h3>
+        <p>所有评分阈值与权重来自 <code>references/method.md</code> 的实测数字。例如长度项直接采用 Top/Bottom 四分位的词数差异倍数；对题性用 <code>llm_relevance_score</code> 的相关系数（r=0.432）作为最强预测因子加权。规则与数据可回溯，结论可辩护。</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">② 代码确定性 vs 人写文案</h3>
+        <p>结构性资产（llms.txt、JSON-LD、HTML 片段）由代码生成，保证不漏 schema 字段、不写错格式；文章正文交给 LLM 按大纲写，代码不越俎代庖写文案。生成器（<code>generate.py</code>）明确划分"机器做"与"人做"的边界。</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">③ 单一真相源 + 自动验收</h3>
+        <p><code>tasks.json</code> 是执行状态唯一来源，<code>verify</code> 不修改内容只重抓判定，把"建议"升级为"服务"。能自动验收的，就不靠人报"做完了"。</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">④ 风险分级与保护性纪律</h3>
+        <p>优先级说"多重要"，风险说"动手多小心"，二者独立。解封 robots 是 P0 也是<strong>高风险</strong>（错一行封全站），执行顺序按"先低风险、高风险单独排期并留回滚"（见 method.md 保护性纪律）。</p>
+      </div>
+    </div>
+
+    <h3>关键工程取舍</h3>
+    <ul class="tight">
+      <li><b>跨平台兼容：</b><code>fcntl.py</code> 是 Windows 文件锁兼容层（基于 <code>msvcrt</code>），使原本依赖 Unix <code>fcntl</code> 的代码可在 Windows 原生运行，无需 WSL。</li>
+      <li><b>平台隔离：</b><code>sample.py</code> 的 <code>PROVIDERS</code> 注册表区分 cn / en 市场与观测集合；Web 与 App 答案分终端单独记录，避免混算失真。</li>
+      <li><b>三语安全：</b>抽取块正则同时覆盖中 / 英 / 日表述，否则会把日文页整体误判为"缺块"；"如何/怎么"等弱信号必须配合列表结构才计为操作步骤块，防止问句标题刷分。</li>
+      <li><b>功能页豁免：</b>登录 / 注册 / 购物车 / 联系页等天然低内容，不按 SPA 空壳 P0 误报（<code>FUNC_PAGE</code> 正则）。</li>
+      <li><b>最小检索单元：</b>按 H2 把正文切成段落组——一段能独立回答问题的文字可赢过竞品整页（GEO Readiness Manual）。</li>
+    </ul>
+  </section>
+
+  <!-- 4 SCENARIOS -->
+  <section id="scenarios">
+    <h2><span class="num">04</span>典型应用场景</h2>
+    <div class="grid c2">
+      <div class="mod"><span class="tag">场景 A</span><h4>出海品牌的双语 GEO</h4><p>配置 <code>market: both</code>，audit 与 sample 双市场并行，generate 自动产出 <code>llms.txt</code> 与 <code>llms.en.txt</code>；verify 用 <code>site.lang_balance</code> / <code>site.en_pages_gte</code> 验收中英文页面均衡度。</p></div>
+      <div class="mod"><span class="tag">场景 B</span><h4>SaaS 产品的可引用性改造</h4><p>audit 识别"缺数字/定义/对比/FAQ 块"的页面，generate 产出 definition/faq 片段与 JSON-LD，verify 用 <code>pages.block:*</code> 验收抽取块补齐。</p></div>
+      <div class="mod"><span class="tag">场景 C</span><h4>AI 爬虫被误封的恢复</h4><p>audit 报 <code>site.no_ai_bot_block</code> / <code>site.no_ai_ua_block</code>，plan 生成高风险工单，verify 重抓确认 robots 放行——典型"P0 + 高风险"排期。</p></div>
+      <div class="mod"><span class="tag">场景 D</span><h4>代理机构批量客户交付</h4><p>每客户一个 slug，dashboard 切换项目；<code>deliver</code> 输出客户友好的 HTML/CSV 包，不暴露内部脚本名，结论附依据。</p></div>
+      <div class="mod"><span class="tag">场景 E</span><h4>竞品可见性基准对比</h4><p>config 配置 <code>competitors</code>，sample 量化自身与竞品在各引擎的提及/引用率，<code>metrics.own_cite_gte</code> 跟踪官网被引用占比。</p></div>
+      <div class="mod"><span class="tag">场景 F</span><h4>持续监测闭环</h4><p>周期性重跑 <code>sample → verify</code>，用 <code>external.any</code> 与 <code>metrics.*</code> 监控外站引用与品牌提及趋势，形成月度/季度报告。</p></div>
+    </div>
+  </section>
+
+  <!-- 5 USAGE -->
+  <section id="usage">
+    <h2><span class="num">05</span>使用建议</h2>
+
+    <h3>① 启动与运行</h3>
+    <ul class="tight">
+      <li><b>看板方式（推荐客户演示 / 团队协作）：</b><br><code>python scripts/geo.py ui</code> → 浏览器打开 <code>http://127.0.0.1:8765/</code></li>
+      <li><b>命令行方式（推荐自动化 / 批量）：</b>直接调用 <code>geo.py &lt;command&gt;</code></li>
+      <li>Windows 用户无需 WSL：脚本自带 <code>fcntl</code> 兼容层。运行时确保 <code>scripts/</code> 在 <code>PYTHONPATH</code> 中（本地 <code>fcntl.py</code> 优先于系统模块被导入）。</li>
+      <li>启动前先跑 <code>python scripts/geo.py doctor</code> 自检依赖、API Key、浏览器是否就绪，避免中途中断。</li>
+    </ul>
+
+    <h3>② 标准操作流程</h3>
+    <pre><span class="c"># 1) 建项目并填写事实卡（最关键的一步）</span>
+python scripts/geo.py init   <span class="c"># 按提示填 facts.md</span>
+
+<span class="c"># 2) 体检 + 采样（可并行）</span>
+python scripts/geo.py audit
+python scripts/geo.py sample
+
+<span class="c"># 3) 生成工单 → 产出资产 → 自动验收</span>
+python scripts/geo.py plan
+python scripts/geo.py generate
+python scripts/geo.py verify
+
+<span class="c"># 4) 交付</span>
+python scripts/geo.py deliver</pre>
+
+    <div class="note"><b>事实卡是第一生产力。</b><code>content/facts.md</code> 是评分与资产生成的唯一事实源。定义一句话、关键数字表、适用/不适用场景填得越准，下游 llms.txt 与 JSON-LD 质量越高。务必先把它写扎实。</div>
+
+    <h3>③ 工单执行纪律</h3>
+    <ul class="tight">
+      <li><b>优先级 ≠ 风险：</b>按"先低风险快速优化，高风险技术改造单独排期并留回滚"的顺序推进。</li>
+      <li><b>没有验收标准的不接：</b>工单必须有可校验的 <code>acceptance.check</code>，否则是愿望不是任务。</li>
+      <li><b>watch 类任务看窗口：</b>改已有页面内容后，按 7 / 14 / 28 天观察窗看真实数据再判定。</li>
+    </ul>
+
+    <h3>④ 避坑清单</h3>
+    <div class="grid c2">
+      <div class="card">
+        <h4 style="margin-top:0;color:var(--danger)">不要做</h4>
+        <ul class="tight">
+          <li>不要混算不同平台 / 终端的采样结果</li>
+          <li>不要把"建议"当"已交付"——以 verify 结果为界</li>
+          <li>不要在没回滚预案时动 robots / WAF / noindex</li>
+          <li>不要向客户承诺"某平台一定引用"</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="margin-top:0;color:var(--ok)">应该做</h4>
+        <ul class="tight">
+          <li>先 <code>doctor</code> 自检再开跑</li>
+          <li>把事实卡 / 工单 / 资产统一收进一个 slug</li>
+          <li>结构性资产用 generate 确定性产出</li>
+          <li>周期性 <code>sample → verify</code> 形成监测闭环</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note warn">依赖说明：部分模块（<code>sample</code> / <code>generate</code> 调用的 LLM）需要 <code>requests / bs4 / lxml</code> 与对应平台 API Key（如 <code>ZHIPUAI_API_KEY</code>、<code>ARK_API_KEY</code>）。缺失 API Key 时，相关平台自动降级为 manual 采样，不会中断整期。</div>
+  </section>
+
+  <!-- APPENDIX -->
+  <section id="workflow">
+    <h2><span class="num">06</span>附录 · 命令速查与工作流</h2>
+    <table>
+      <tr><th style="width:26%">命令</th><th>作用</th></tr>
+      <tr><td><code>geo.py doctor</code></td><td>环境自检（依赖 / API Key / 浏览器）</td></tr>
+      <tr><td><code>geo.py init</code></td><td>新建项目，初始化 facts.md 与 config.json</td></tr>
+      <tr><td><code>geo.py audit</code></td><td>抓取并体检页面，产出 audit.json + 评分</td></tr>
+      <tr><td><code>geo.py sample</code></td><td>对各引擎采样 AI 答案，产出 samples/metrics</td></tr>
+      <tr><td><code>geo.py plan</code></td><td>从诊断生成可验收工单（tasks.json）</td></tr>
+      <tr><td><code>geo.py generate</code></td><td>按工单确定性生成资产（assets/）</td></tr>
+      <tr><td><code>geo.py verify</code></td><td>重抓并重跑 checker，回写工单状态</td></tr>
+      <tr><td><code>geo.py report</code></td><td>生成本期诊断与可见性报告</td></tr>
+      <tr><td><code>geo.py deliver</code></td><td>打包客户交付目录</td></tr>
+      <tr><td><code>geo.py ui</code></td><td>启动 Web 看板（默认 8765 端口）</td></tr>
+    </table>
+    <div class="note">本文档与代码同源：所有评分口径、规则语法、风险分级均可在 <code>scripts/</code> 对应模块与 <code>references/method.md</code> 中查到对应实现。当文档与代码出现分歧时，以代码为准。</div>
+  </section>
+
+  <footer>
+    GEOLOOK 专业应用指导文档 · 依据项目代码结构与设计思路整理 · 适配技术用户与 GEO 顾问阅读<br>
+    文档为静态 HTML，可离线打开；更新时请同步 <code>references/method.md</code> 的实证口径。
+  </footer>
+
+</div>
+</body>
+</html>

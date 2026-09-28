@@ -1,0 +1,2 @@
+[geo] 看板已启动：http://127.0.0.1:8765/（Ctrl+C 退出）
+Gtk-Message: 19:06:44.979: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
